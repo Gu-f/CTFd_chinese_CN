@@ -21,9 +21,14 @@ core_english文件同理
 themes文件直接替换CTFd\\CTFd目录下的themes即可完成汉化  
 
 # 效果预览：  
-![img](..\image\index.jpg)  
-![img](..\image\admin.jpg)  
-![img](..\image\config.jpg)  
-![img](..\image\top.jpg)  
-![img](..\image\tz.jpg)  
-![img](..\image\user.jpg)  
+![img](/image/index.jpg)  
+
+![img](/image/admin.jpg)  
+
+![img](/image/config.jpg)  
+
+![img](/image/top.jpg)  
+
+![img](/image/tz.jpg)  
+
+![img](/image/user.jpg)  
