@@ -1,0 +1,47 @@
+<div role="tabpanel" class="tab-pane config-section" id="accounts">
+	<form method="POST" autocomplete="off" class="w-100">
+
+		<div class="form-group">
+			<label>
+				账户电子邮件白名单
+				<small class="form-text text-muted">
+					用户可以注册的邮箱类型，用逗号做分割
+				</small>
+			</label>
+			<input class="form-control" id='domain-whitelist' name='domain_whitelist' type='text'
+				   placeholder=""
+				   {% if domain_whitelist is defined and domain_whitelist != None %}value="{{ domain_whitelist }}"{% endif %}>
+			<small class="form-text text-muted">
+				例如：ctfd.io,gmail.com,yahoo.com
+			</small>
+		</div>
+
+		<div class="form-group">
+			<label>
+				验证邮箱<br>
+				<small class="form-text text-muted">
+					用于控制用户是否必须先进行邮箱验证才能参加比赛
+				</small>
+			</label>
+			<select class="form-control" name="verify_emails">
+				<option value="true" {% if verify_emails == True %}selected{% endif %}>开启</option>
+				<option value="false" {% if verify_emails == False or verify_emails == None %}selected{% endif %}>关闭</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>
+				团队名称修改<br>
+				<small class="form-text text-muted">
+					控制用户能否改变其参与比赛的名称
+				</small>
+			</label>
+			<select class="form-control" name="name_changes">
+				<option value="true" {% if name_changes == True or name_changes == None %}selected{% endif %}>开启</option>
+				<option value="false" {% if name_changes == False %}selected{% endif %}>关闭</option>
+			</select>
+		</div>
+
+		<button type="submit" class="btn btn-md btn-primary float-right">确认</button>
+	</form>
+</div>

@@ -1,0 +1,52 @@
+<div role="tabpanel" class="tab-pane config-section" id="backup">
+	<ul class="nav nav-tabs mb-3" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link active" href="#export-ctf" aria-controls="export-ctf" role="tab"
+			   data-toggle="tab">导出</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#import-ctf" aria-controls="import-ctf" role="tab" data-toggle="tab">导入</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link " href="#save-csv" aria-controls="save-csv" role="tab" data-toggle="tab">下载 CSV</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="export-ctf">
+			<div class="form-group">
+				<p>导出CTF当前状态的存档，可用于重新导入其他CTF，或者由脚本或第三方软件做数据统计</p>
+				<p>点击下面的按钮导出</p>
+			</div>
+			<div class="form-group">
+				<a href="{{ url_for('admin.export_ctf') }}" id="export-button" class="btn btn-warning">导出</a>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="import-ctf">
+			<div class="form-group">
+				<p>你可以通过下面的导入按钮进行导入之前导出的数据文件，它将完全抹去当前数据及状态，用导入的数据进行替换和覆盖，请确保导入数据没有问题。</p>
+
+				<div class="alert alert-warning" role="alert">
+					导入操作将完全删除现有数据！
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="container-files">请选择导入文件</label>
+				<input class="form-control-file" type="file" name="backup" id="import-file" accept=".zip">
+			</div>
+			<input id="import-button" type="submit" class="btn btn-warning" value="Import">
+		</div>
+		<div role="tabpanel" class="tab-pane" id="save-csv">
+			<form method="GET" action="{{ url_for('admin.export_csv') }}">
+				<div class="form-group">
+					<label for="container-files">数据表</label>
+					<select class="form-control" name="table">
+						{% for table in database_tables %}
+							<option value="{{ table }}">{{ table }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<input type="submit" class="btn btn-warning" value="Download CSV">
+			</form>
+		</div>
+	</div>
+</div>
