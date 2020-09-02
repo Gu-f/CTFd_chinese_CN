@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1>团队</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center">
+				<p>欢迎来到 {{ Configs.ctf_name }}!</p>
+				<p>
+					为了更好的参与到整个比赛中，您必须加入或创建一个团队.
+				</p>
+			</div>
+		</div>
+		{% if integrations.mlc() %}
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center">
+				<a class="btn btn-primary w-100" href="{{ url_for('auth.oauth_login') }}">Play with Official Team</a>
+			</div>
+		</div>
+		<div class="row pt-3">
+			<div class="col-md-3 offset-md-3 text-center">
+				<a class="btn btn-light w-100" href="{{ url_for('teams.join') }}">Join Unofficial Team</a>
+			</div>
+			<div class="col-md-3 text-center">
+				<a class="btn btn-light w-100" href="{{ url_for('teams.new') }}">Create Unofficial Team</a>
+			</div>
+		</div>
+		{% else %}
+		<div class="row pt-3">
+			<div class="col-md-3 offset-md-3 text-center">
+				<a class="btn btn-primary w-100" href="{{ url_for('teams.join') }}">加入一个团队</a>
+			</div>
+			<div class="col-md-3 text-center">
+				<a class="btn btn-primary w-100" href="{{ url_for('teams.new') }}">创建一个团队</a>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
