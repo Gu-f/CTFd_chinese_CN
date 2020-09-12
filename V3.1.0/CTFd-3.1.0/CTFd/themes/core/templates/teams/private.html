@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+	<div id="team-edit-modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-action text-center w-100">团队编辑</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body clearfix">
+					{% with form = Forms.teams.TeamSettingsForm(obj=team) %}
+					<form id="team-info-form" method="POST">
+						<div class="form-group">
+							{{ form.name.label }}
+							{{ form.name(class="form-control") }}
+						</div>
+						<div class="form-group">
+							{{ form.confirm.label }}
+							{{ form.confirm(class="form-control") }}
+						</div>
+						<div class="form-group">
+							{{ form.password.label }}
+							{{ form.password(class="form-control") }}
+						</div>
+						<div class="form-group">
+							{{ form.website.label }}
+							{{ form.website(class="form-control") }}
+						</div>
+						<div class="form-group">
+							{{ form.affiliation.label }}
+							{{ form.affiliation(class="form-control") }}
+						</div>
+						<div class="form-group">
+							{{ form.country.label }}
+							{{ form.country(class="form-control custom-select") }}
+						</div>
+						<div id="results">
+
+						</div>
+						{{ form.submit(class="btn btn-primary btn-outlined float-right modal-action") }}
+					</form>
+					{% endwith %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="team-captain-modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-action text-center w-100">任命队长</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body clearfix">
+					{% with form = Forms.teams.TeamCaptainForm(captain_id=team.captain_id) %}
+					<form id="team-captain-form" method="POST">
+						<div class="form-group">
+							{{ form.captain_id.label }}
+							{% for member in team.members %}
+								{# Append members to the select choices #}
+								{% set _ = form.captain_id.choices.append((member.id, member.name)) %}
+							{% endfor %}
+							{{ form.captain_id(class="form-control custom-select") }}
+						</div>
+						<div id="results">
+						</div>
+						{{ form.submit(class="btn btn-primary btn-outlined float-right modal-action") }}
+					</form>
+					{% endwith %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1 id="team-id" team-id="{{ team.id }}">{{ team.name }}</h1>
+			{% if team.oauth_id %}
+				<a href="https://majorleaguecyber.org/t/{{ team.name }}">
+					<h3><span class="badge badge-primary">Official</span></h3>
+				</a>
+			{% endif %}
+			{% if team.affiliation %}
+				<h3 class="d-inline-block">
+					<span class="badge badge-primary">{{ team.affiliation }}</span>
+				</h3>
+			{% endif %}
+			{% if team.country %}
+				<h3 class="d-inline-block">
+					<span class="badge badge-primary">
+						<i class="flag-{{ team.country.lower() }}"></i>
+						{{ lookup_country_code(team.country) }}
+					</span>
+				</h3>
+			{% endif %}
+			<h2 id="team-place" class="text-center">
+				{# This intentionally hides the team's place when scores are hidden because this can be their internal profile
+			and we don't want to leak their place in the CTF. #}
+				{# Public page hiding is done at the route level #}
+				{% if scores_visible() %}
+					{% if place %}
+						
+						<small>名次:</small>
+						{{ place }}
+					{% endif %}
+				{% endif %}
+			</h2>
+			<h2 id="team-score" class="text-center">
+				{% if score %}
+					
+					<small>得分:</small>
+					{{ score }}
+				{% endif %}
+			</h2>
+			<div class="pt-3">
+				<a class="edit-team">
+					{% if team.captain_id == user.id %}
+						<i class="btn-fa fas fa-cogs fa-2x px-2"
+						   data-toggle="tooltip"
+						   data-placement="top"
+						   title="Edit Team"></i>
+
+						<a class="edit-captain">
+							<i class="btn-fa fas fa-user-tag fa-2x px-2" data-toggle="tooltip" data-placement="top"
+							   title="Choose Captain"></i>
+						</a>
+					{% else %}
+						<i class="btn-fa fas fa-cogs fa-2x px-2 fa-disabled"
+						   data-toggle="tooltip"
+						   data-placement="top"
+						   title="Only team captains can edit team information"></i>
+						<a class="edit-captain">
+							<i class="btn-fa fas fa-user-tag fa-2x px-2 fa-disabled"
+							   data-toggle="tooltip"
+							   data-placement="top"
+							   title="Only team captains can choose a new captain"></i>
+						</a>
+					{% endif %}
+				</a>
+				{% if team.website and (team.website.startswith('http://') or team.website.startswith('https://')) %}
+					<a href="{{ team.website }}" target="_blank" style="color: inherit;">
+						<i class="fas fa-external-link-alt fa-2x px-2" data-toggle="tooltip" data-placement="top"
+						   title="{{ team.website }}"></i>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		{% include "components/errors.html" %}
+
+		<br>
+
+		<div class="row min-vh-25">
+			<div class="col-md-12">
+				<h3>团队成员</h3>
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<td><b>用户名</b></td>
+						<td><b>分数</b></td>
+					</tr>
+					</thead>
+					<tbody>
+					{% for member in team.members %}
+						<tr>
+							<td>
+								<a href="{{ url_for('users.public', user_id=member.id) }}">
+									{{ member.name }}
+								</a>
+								{% if team.captain_id == member.id %}
+									<span class="badge badge-primary ml-2">队长</span>
+								{% endif %}
+							</td>
+							<td>{{ member.score }}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		{% if solves %}
+			<div class="row">
+				<div class="col-md-6 d-none d-md-block d-lg-block">
+					<div id="keys-pie-graph" class="d-flex align-items-center">
+						<div class="text-center w-100">
+							<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 d-none d-md-block d-lg-block">
+					<div id="categories-pie-graph" class="d-flex align-items-center">
+						<div class="text-center w-100">
+							<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+						</div>
+					</div>
+				</div>
+				<br class="clearfix">
+				<div class="col-md-12 d-none d-md-block d-lg-block">
+					<div id="score-graph" class="w-100 d-flex align-items-center">
+						<div class="text-center w-100">
+							<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+
+			{% if awards %}
+				<div class="row">
+					<div class="col-md-12">
+						<h3>奖项</h3>
+					</div>
+					{% for award in awards %}
+						<div class="col-md-3 col-sm-6">
+							<p class="text-center">
+								<i class="award-icon award-{{ award.icon }} fa-2x"></i>
+								<br>
+								<strong>{{ award.name }}</strong>
+							</p>
+							{% if award.category %}<p class="text-center">{{ award.category }}</p>{% endif %}
+							{% if award.description %}<p class="text-center">{{ award.description }}</p>{% endif %}
+							<p class="text-center">{{ award.value }}</p>
+						</div>
+					{% endfor %}
+				</div>
+
+				<br>
+			{% endif %}
+
+			<div class="row">
+				<div class="col-md-12">
+					<h3>攻破列表</h3>
+					<table class="table table-striped">
+						<thead>
+						<tr>
+							<td><b>挑战</b></td>
+							<td class="d-none d-md-block d-lg-block"><b>类型</b></td>
+							<td><b>分值</b></td>
+							<td><b>攻破时间</b></td>
+						</tr>
+						</thead>
+						<tbody>
+						{% for solve in solves %}
+							<tr>
+								<td>
+									<a href="{{ url_for('challenges.listing') }}#{{ solve.challenge.name }}-{{ solve.challenge.id }}">
+										{{ solve.challenge.name }}
+									</a>
+								</td>
+								<td class="d-none d-md-block d-lg-block">{{ solve.challenge.category }}</td>
+								<td>{{ solve.challenge.value }}</td>
+								<td class="solve-time">
+									<span data-time="{{ solve.date | isoformat }}">{{ solve.date }}</span>
+								</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		{% else %}
+			<div class="row min-vh-25">
+				<h3 class="opacity-50 text-center w-100 justify-content-center align-self-center">
+					加油，目前还没有任何有效攻击。
+				</h3>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var stats_data = {{ {
+			'type': 'team',
+			'id': team.id,
+			'name': team.name,
+			'account_id': 'me' if user is defined and user.team_id == team.id else team.id,
+		} | tojson }};
+		var team_captain = {{ (user.id == team.captain_id) | tojson }};
+	</script>
+	<script defer src="{{ url_for('views.themes', path='js/echarts.bundle.js') }}"></script>
+	{% if solves %}
+		<script defer src="{{ url_for('views.themes', path='js/graphs.js') }}"></script>
+		<script defer src="{{ url_for('views.themes', path='js/pages/stats.js') }}"></script>
+	{% endif %}
+{% endblock %}
+
+{% block entrypoint %}
+	<script defer src="{{ url_for('views.themes', path='js/pages/teams/private.js') }}"></script>
+{% endblock %}
