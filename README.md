@@ -18,7 +18,7 @@ themes ：此文件为汉化的用户及管理界面
 CTFd-master-V3.0.2：直接将themes下的admin和core进行替换即可，未增加core_chinese文件
 
 ### V3.1.0
-CTFd-V3.1.0：直接将themes下的admin和core进行替换即可，未增加core_chinese文件
+CTFd-V3.1.0：直接将themes下的admin和core进行替换即可，未增加core_chinese文件  
 预发行汉化版本，目前未发现兼容性问题，但无法保证部分位置汉化不兼容
 
 # 使用方法：
