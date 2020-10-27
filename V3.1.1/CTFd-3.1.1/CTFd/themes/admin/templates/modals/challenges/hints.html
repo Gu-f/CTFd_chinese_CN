@@ -1,0 +1,26 @@
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<td class="text-center"><b>ID</b></td>
+		<td class="text-center"><b>提示</b></td>
+		<td class="text-center"><b>花费</b></td>
+		<td class="text-center"><b>功能</b></td>
+	</tr>
+	</thead>
+	<tbody>
+	{% for hint in challenge.hints %}
+		<tr>
+			<td class="text-center">{{ hint.type }}</td>
+			<td class="text-break"><pre>{{ hint.content }}</pre></td>
+			<td class="text-center">{{ hint.cost }}</td>
+			<td class="text-center">
+				<i role='button' class='btn-fa fas fa-edit edit-hint' hint-id="{{ hint.id }}"></i>
+				<i role='button' class='btn-fa fas fa-times delete-hint' hint-id="{{ hint.id }}"></i>
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<div class="col-md-12">
+	<button class="btn btn-success float-right" id="hint-add-button">创建提示</button>
+</div>
