@@ -1,0 +1,106 @@
+<div role="tabpanel" class="tab-pane config-section" id="settings">
+	<form method="POST" autocomplete="off" class="w-100">
+		<div class="form-group">
+			<label>
+				挑战可见性<br>
+				<small class="form-text text-muted">
+					控制用户是否必须登陆后才能看到挑战内容。
+				</small>
+			</label>
+			<select class="form-control custom-select" name="challenge_visibility">
+				<option value="public" {% if challenge_visibility == 'public' %}selected{% endif %}>
+					公开
+				</option>
+				<option value="private" {% if challenge_visibility == 'private' %}selected{% endif %}>
+					登录可见
+				</option>
+				<option value="admins" {% if challenge_visibility == 'admins' %}selected{% endif %}>
+					仅管理员
+				</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>
+				分数可见性<br>
+				<small class="form-text text-muted">
+					控制分数/攻破列表可见性。
+				</small>
+			</label>
+			<select class="form-control custom-select" name="score_visibility">
+				<option value="public" {% if score_visibility == 'public' %}selected{% endif %}>
+					公开
+				</option>
+				<option value="private" {% if score_visibility == 'private' %}selected{% endif %}>
+					登录可见
+				</option>
+				<option value="hidden" {% if score_visibility == 'hidden' %}selected{% endif %}>
+					隐藏
+				</option>
+				<option value="admins" {% if score_visibility == 'admins' %}selected{% endif %}>
+					仅管理员
+				</option>
+			</select>
+			<small class="form-text text-muted">
+				此设置通常与账户可见性相同以避免冲突.
+			</small>
+		</div>
+
+		<div class="form-group">
+			<label>
+				账户可见性<br>
+				<small class="form-text text-muted">
+					控制账户哪些人可见。
+				</small>
+			</label>
+			<select class="form-control custom-select" name="account_visibility">
+				<option value="public" {% if account_visibility == 'public' %}selected{% endif %}>
+					公开
+				</option>
+				<option value="private" {% if account_visibility == 'private' %}selected{% endif %}>
+					登录可见
+				</option>
+				<option value="admins" {% if account_visibility == 'admins' %}selected{% endif %}>
+					仅管理员
+				</option>
+			</select>
+			<small class="form-text text-muted">
+				此设置通常与分数可见性相同以避免冲突.
+			</small>
+		</div>
+
+		<div class="form-group">
+			<label>
+				注册可见性<br>
+				<small class="form-text text-muted">
+					控制是否启用注册功能。
+				</small>
+			</label>
+			<select class="form-control custom-select" name="registration_visibility">
+				<option value="public" {% if registration_visibility == 'public' %}selected{% endif %}>
+					启用
+				</option>
+				<option value="private" {% if registration_visibility == 'private' %}selected{% endif %}>
+					关闭
+				</option>
+				<option value="mlc" {% if registration_visibility == 'mlc' %}selected{% endif %}>
+					MajorLeagueCyber Only
+				</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<div class="form-check">
+				<label>
+					<input id="paused" name="paused" type="checkbox" {% if paused %}checked{% endif %}>
+					暂停比赛<br>
+					<small>
+						阻止用户提交flag，但是比赛仍然可见，比赛继续后方可继续提交flag.
+					</small>
+				</label>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-md btn-primary float-right">更新</button>
+	</form>
+</div>
