@@ -5,6 +5,7 @@ Time-Line:
 + 更新CTFd-V3.1.0版本汉化，同时主题上优化了大陆上访问CTFd资源无法加载导致的卡顿问题
 + ~~更新CTFd-V3.1.1版本汉化~~  
 + 更新CTFd-V3.1.1版本汉化独立包  
++ 更新CTFd-V3.4.0版本汉化包(admin/core), 同时优化大陆访问字体资源导致的卡顿问题  
 
 # 文件解读：
 最新版请访问： https://github.com/CTFd/CTFd   
