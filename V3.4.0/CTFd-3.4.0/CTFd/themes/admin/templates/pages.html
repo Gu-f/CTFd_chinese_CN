@@ -8,7 +8,7 @@
 	<div class="container">
 		<h1>页面
 			<a class="no-decoration" href="{{ url_for('admin.pages_new') }}">
-				<span class="create-page" role="button" data-toggle="tooltip" title="Create Page">
+				<span class="create-page" role="button" data-toggle="tooltip" title="新建页面">
 					<i class="btn-fa fas fa-plus-circle"></i>
 				</span>
 			</a>
@@ -21,7 +21,7 @@
 		<div class="col-md-12">
 			<div class="float-right pb-3">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-outline-danger" data-toggle="tooltip" title="Delete Pages" id="pages-delete-button">
+					<button type="button" class="btn btn-outline-danger" data-toggle="tooltip" title="删除页面" id="pages-delete-button">
 						<i class="btn-fa fas fa-trash-alt"></i>
 					</button>
 				</div>
@@ -39,10 +39,10 @@
 						</div>
 					</th>
 					<th class="sort-col text-center"><b>标题</b></th>
-					<th class="sort-col text-center"><b>位置</b></th>
-					<th class="sort-col text-center"><b>认证</b></th>
-					<th class="sort-col text-center"><b>可见性</b></th>
-					<th class="sort-col text-center"><b>发布人</b></th>
+					<th class="sort-col text-center"><b>路由(URL指向)</b></th>
+					<th class="sort-col text-center"><b>是否需要登录访问</b></th>
+					<th class="sort-col text-center"><b>是否隐藏</b></th>
+					<th class="sort-col text-center"><b>发布状态</b></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -63,21 +63,21 @@
 						</td>
 						<td class="text-center">
 							{% if page.auth_required %}
-							Required
+							需要
 							{% else %}
 							{% endif %}
 						</td>
 						<td class="text-center">
 							{% if page.hidden %}
-								Hidden
+								隐藏
 							{% else %}
 							{% endif %}
 						</td>
 						<td class="text-center">
 							{% if page.draft %}
-								Draft
+								草稿
 							{% else %}
-								Published
+								已发布
 							{% endif %}
 						</td>
 					</tr>

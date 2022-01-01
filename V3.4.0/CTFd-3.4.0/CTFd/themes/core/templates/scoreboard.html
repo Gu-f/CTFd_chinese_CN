@@ -3,7 +3,7 @@
 {% block content %}
 <div class="jumbotron">
 	<div class="container">
-		<h1>计分板</h1>
+		<h1>排行榜</h1>
 	</div>
 </div>
 <div class="container">
@@ -22,9 +22,9 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<td scope="col" width="10px"><b>序号</b></td>
+						<td scope="col" width="10px"><b>NO.</b></td>
 						<td scope="col"><b>{{ get_mode_as_word(capitalize=True) }}</b></td>
-						<td scope="col"><b>分数</b></td>
+						<td scope="col"><b>得分</b></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,11 +38,11 @@
 								{% if standing.oauth_id %}
 									{% if Configs.user_mode == 'teams' %}
 									<a href="https://majorleaguecyber.org/t/{{ standing.name }}">
-										<span class="badge badge-primary">Official</span>
+										<span class="badge badge-primary">官方</span>
 									</a>
 									{% elif Configs.user_mode == 'users' %}
 									<a href="https://majorleaguecyber.org/u/{{ standing.name }}">
-										<span class="badge badge-primary">Official</span>
+										<span class="badge badge-primary">官方</span>
 									</a>
 									{% endif %}
 								{% endif %}

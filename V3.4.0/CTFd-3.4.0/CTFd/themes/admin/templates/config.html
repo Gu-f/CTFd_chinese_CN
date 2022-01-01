@@ -15,7 +15,7 @@
 		<div class="col-md-3">
 			<ul class="nav nav-pills flex-column">
 				<li class="nav-item">
-					<a class="nav-link rounded-0 active" href="#appearance" role="tab" data-toggle="tab">名称</a>
+					<a class="nav-link rounded-0 active" href="#appearance" role="tab" data-toggle="tab">外观</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link rounded-0" href="#theme" role="tab" data-toggle="tab">主题</a>
@@ -27,7 +27,7 @@
 					<a class="nav-link rounded-0" href="#fields" role="tab" data-toggle="tab">自定义字段</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link rounded-0" href="#mlc" role="tab" data-toggle="tab">联盟网络</a>
+					<a class="nav-link rounded-0" href="#mlc" role="tab" data-toggle="tab">MajorLeagueCyber</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link rounded-0" href="#settings" role="tab" data-toggle="tab">设置</a>
@@ -36,19 +36,19 @@
 					<a class="nav-link rounded-0" href="#security" role="tab" data-toggle="tab">安全</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link rounded-0" href="#email" role="tab" data-toggle="tab">邮件</a>
+					<a class="nav-link rounded-0" href="#email" role="tab" data-toggle="tab">邮箱</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link rounded-0" href="#ctftime" role="tab" data-toggle="tab">时间</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link rounded-0" href="#legal" role="tab" data-toggle="tab">法律政策</a>
+					<a class="nav-link rounded-0" href="#legal" role="tab" data-toggle="tab">服务条款和隐私政策</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link rounded-0" href="#backup" role="tab" data-toggle="tab">备份</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link rounded-0" href="#usermode" role="tab" data-toggle="tab">用户配置</a>
+					<a class="nav-link rounded-0" href="#usermode" role="tab" data-toggle="tab">用户模式</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link rounded-0" href="{{ url_for('admin.reset') }}" role="tab">重置</a>
@@ -58,7 +58,7 @@
 		<div class="col-md-9">
 			{% for error in errors %}
 				<div class="alert alert-danger alert-dismissable" role="alert">
-					<span class="sr-only">Error:</span>
+					<span class="sr-only">错误:</span>
 					{{ error }}
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">×</span>

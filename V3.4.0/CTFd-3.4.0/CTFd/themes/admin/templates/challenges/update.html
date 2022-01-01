@@ -5,8 +5,8 @@
 	{% block name %}
 	<div class="form-group">
 		<label>
-			Name<br>
-			<small class="form-text text-muted">题目名称</small>
+			挑战名称<br>
+			<small class="form-text text-muted">挑战名称</small>
 		</label>
 		<input type="text" class="form-control chal-name" name="name" value="{{ challenge.name }}">
 	</div>
@@ -15,8 +15,8 @@
 	{% block category %}
 	<div class="form-group">
 		<label>
-			Category<br>
-			<small class="form-text text-muted">Challenge Category</small>
+			挑战类别<br>
+			<small class="form-text text-muted">挑战类别</small>
 		</label>
 		<input type="text" class="form-control chal-category" name="category" value="{{ challenge.category }}">
 	</div>
@@ -25,9 +25,9 @@
 	{% block message %}
 	<div class="form-group">
 		<label>
-			Message<br>
+			挑战描述<br>
 			<small class="form-text text-muted">
-				Use this to give a brief introduction to your challenge.
+				简单介绍下你的挑战，挑战的描述
 			</small>
 		</label>
 		<textarea id="desc-editor" class="form-control chal-desc-editor markdown" name="description" rows="10">{{ challenge.description }}</textarea>
@@ -37,9 +37,9 @@
 	{% block connection_info %}
 	<div class="form-group">
 		<label>
-			Connection Info<br>
+			链接信息<br>
 			<small class="form-text text-muted">
-				Use this to specify a link, hostname, or connection instructions for your challenge.
+				用这个给你的挑战指定链接相关说明，如主机名，端口等
 			</small>
 		</label>
 		<input type="text" class="form-control chal-connection-info" name="connection_info" value="{{ challenge.connection_info | default('', true) }}">
@@ -49,9 +49,9 @@
 	{% block value %}
 	<div class="form-group">
 		<label for="value">
-			Value<br>
+			分值<br>
 			<small class="form-text text-muted">
-				This is how many points teams will receive once they solve this challenge.
+				解决该挑战能够获得的分数.
 			</small>
 		</label>
 		<input type="number" class="form-control chal-value" name="value" value="{{ challenge.value }}" required>
@@ -61,8 +61,8 @@
 	{% block max_attempts %}
 	<div class="form-group">
 		<label>
-			Max Attempts<br>
-			<small class="form-text text-muted">Maximum amount of attempts users receive. Leave at 0 for unlimited.</small>
+			最大尝试次数<br>
+			<small class="form-text text-muted">用户提交的最大次数限制，设置为0表示不做限制.</small>
 		</label>
 
 		<input type="number" class="form-control chal-attempts" name="max_attempts" value="{{ challenge.max_attempts }}">
@@ -72,13 +72,13 @@
 	{% block state %}
 	<div class="form-group">
 		<label>
-			State<br>
-			<small class="form-text text-muted">Changes the state of the challenge (e.g. visible, hidden)</small>
+			挑战状态<br>
+			<small class="form-text text-muted">更改挑战的状态(e.g. 发布, 隐藏)</small>
 		</label>
 
 		<select class="form-control custom-select" name="state">
-			<option value="visible" {% if challenge.state == "visible" %}selected{% endif %}>Visible</option>
-			<option value="hidden" {% if challenge.state == "hidden" %}selected{% endif %}>Hidden</option>
+			<option value="visible" {% if challenge.state == "visible" %}选择{% endif %}>发布</option>
+			<option value="hidden" {% if challenge.state == "hidden" %}选择{% endif %}>隐藏</option>
 		</select>
 	</div>
 	{% endblock %}
@@ -86,7 +86,7 @@
 	{% block submit %}
 	<div>
 		<button class="btn btn-success btn-outlined float-right" type="submit">
-			Update
+			更新
 		</button>
 	</div>
 	{% endblock %}

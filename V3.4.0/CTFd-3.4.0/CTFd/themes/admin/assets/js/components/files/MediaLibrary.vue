@@ -6,7 +6,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h3 class="text-center">Media Library</h3>
+                <h3 class="text-center">媒体库</h3>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@
                   </div>
                 </div>
                 <div class="col-md-6" id="media-library-details">
-                  <h4 class="text-center">Media Details</h4>
+                  <h4 class="text-center">媒体详情</h4>
                   <div id="media-item">
                     <div class="text-center" id="media-icon">
                       <div v-if="this.selectedFile">
@@ -88,7 +88,7 @@
 
                     <div class="form-group">
                       <div v-if="this.selectedFile">
-                        Link:
+                        链接:
                         <input
                           class="form-control"
                           type="text"
@@ -98,7 +98,7 @@
                         />
                       </div>
                       <div v-else>
-                        Link:
+                        链接:
                         <input
                           class="form-control"
                           type="text"
@@ -119,7 +119,7 @@
                             data-placement="top"
                             title="Insert link into editor"
                           >
-                            Insert
+                            插入
                           </button>
                         </div>
                         <div class="col-md-3">
@@ -157,7 +157,7 @@
           <form id="media-library-upload" enctype="multipart/form-data">
             <div class="form-group">
               <label for="media-files">
-                Upload Files
+                上传文件
               </label>
               <input
                 type="file"
@@ -167,7 +167,7 @@
                 multiple
               />
               <sub class="help-block">
-                Attach multiple files using Control+Click or Cmd+Click.
+                使用 Control键+鼠标左键 或 Cmd键+鼠标左键 进行附加上传多个文件
               </sub>
             </div>
             <input type="hidden" value="page" name="type" />
@@ -180,7 +180,7 @@
               type="submit"
               class="btn btn-primary media-upload-button"
             >
-              Upload
+              上传
             </button>
           </div>
         </div>
@@ -237,7 +237,7 @@ export default {
     deleteSelectedFile: function() {
       var file_id = this.selectedFile.id;
 
-      if (confirm("Are you sure you want to delete this file?")) {
+      if (confirm("你确定要删除这个文件?")) {
         CTFd.fetch("/api/v1/files/" + file_id, {
           method: "DELETE"
         }).then(response => {

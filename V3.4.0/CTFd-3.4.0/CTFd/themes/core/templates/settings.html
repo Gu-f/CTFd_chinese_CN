@@ -13,8 +13,8 @@
 	<div class="row">
 		<div class="col-md-2 offset-md-1">
 			<div class="nav flex-column nav-pills" role="tablist">
-				<a class="nav-link active" id="settings-profile-tab" data-toggle="pill" href="#profile" role="tab">简介</a>
-				<a class="nav-link" id="settings-tokens-tab" data-toggle="pill" href="#tokens" role="tab">令牌</a>
+				<a class="nav-link active" id="settings-profile-tab" data-toggle="pill" href="#profile" role="tab">个人信息</a>
+				<a class="nav-link" id="settings-tokens-tab" data-toggle="pill" href="#tokens" role="tab">访问令牌</a>
 			</div>
 		</div>
 		<div class="col-md-8">
@@ -90,13 +90,13 @@
 
 					{% if tokens %}
 					<hr>
-					<h4 class="text-center">Active Tokens</h4>
+					<h4 class="text-center">激活的令牌</h4>
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<td class="text-center"><b>Created</b></td>
-								<td class="text-center"><b>Expiration</b></td>
-								<td class="text-center"><b>Delete</b></td>
+								<td class="text-center"><b>创建时间</b></td>
+								<td class="text-center"><b>到期时间</b></td>
+								<td class="text-center"><b>删除</b></td>
 							</tr>
 						</thead>
 						<tbody>

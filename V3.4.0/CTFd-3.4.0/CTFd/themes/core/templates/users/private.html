@@ -48,12 +48,12 @@
 			<div>
 				<h2 class="text-center">
 					{% if account.place %}
-						{{ account.place }} <small>名</small>
+						<small>排名</small> {{ account.place }}
 					{% endif %}
 				</h2>
 				<h2 class="text-center">
 					{% if account.place %}
-						{{ account.score }} <small>分</small>
+						<small>得分</small> {{ account.score }}
 					{% endif %}
 				</h2>
 			</div>
@@ -103,7 +103,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<h3>奖励</h3>
+					<h3>奖项</h3>
 				</div>
 				{% for award in awards %}
 					<div class="col-md-3 col-sm-6">
@@ -123,14 +123,14 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<h3>解答</h3>
+					<h3>完成的挑战</h3>
 					<table class="table table-striped">
 						<thead>
 						<tr>
-							<td><b>题目</b></td>
+							<td><b>挑战</b></td>
 							<td class="d-none d-md-block d-lg-block"><b>类别</b></td>
-							<td><b>价值</b></td>
-							<td><b>时间</b></td>
+							<td><b>分值</b></td>
+							<td><b>完成时间</b></td>
 						</tr>
 						</thead>
 						<tbody>
@@ -155,7 +155,7 @@
 		{% else %}
 			<div class="row min-vh-25">
 				<h3 class="opacity-50 text-center w-100 justify-content-center align-self-center">
-					无解答的题
+					没有完成任何挑战
 				</h3>
 			</div>
 		{% endif %}

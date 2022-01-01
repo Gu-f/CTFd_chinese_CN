@@ -6,7 +6,7 @@
 {% block content %}
 <div class="jumbotron">
 	<div class="container">
-		<h1>用户列表
+		<h1>用户
 			<span class="create-team" role="button" data-toggle="tooltip" title="Create User">
 				<a href="{{ url_for('admin.users_new') }}" style="color: inherit;">
 					<i class="btn-fa fas fa-plus-circle"></i>
@@ -22,10 +22,10 @@
 		<div class="col-md-12">
 			{% if q and field %}
 			<h5 class="text-muted text-center">
-				Searching for users with <strong>{{ field }}</strong> matching <strong>{{ q }}</strong>
+				搜索字段 <strong>{{ field_CN }}</strong> 为 <strong>{{ q }}</strong> 的结果
 			</h5>
 			<h6 class="text-muted text-center pb-3">
-				Page {{ users.page }} of {{ users.total }} results
+				第 {{ users.page }} 页，共 {{ users.total }} 条结果
 			</h6>
 			{% endif %}
 
@@ -35,7 +35,7 @@
 					{{ form.field(class="form-control custom-select w-100") }}
 				</div>
 				<div class="form-group col-md-8">
-					{{ form.q(class="form-control w-100", placeholder="Search for matching users") }}
+					{{ form.q(class="form-control w-100", placeholder="搜索匹配的用户") }}
 				</div>
 				<div class="form-group col-md-2">
 					<button type="submit" class="btn btn-primary w-100">
@@ -53,10 +53,10 @@
 		<div class="col-md-12">
 			<div class="float-right pb-3">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" title="Edit Users" id="users-edit-button">
+					<button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" title="编辑用户" id="users-edit-button">
 						<i class="btn-fa fas fa-pencil-alt"></i>
 					</button>
-					<button type="button" class="btn btn-outline-danger" data-toggle="tooltip" title="Delete Users" id="users-delete-button">
+					<button type="button" class="btn btn-outline-danger" data-toggle="tooltip" title="删除用户" id="users-delete-button">
 						<i class="btn-fa fas fa-trash-alt"></i>
 					</button>
 				</div>
@@ -76,11 +76,11 @@
 						<th class="sort-col text-center"><b>ID</b></th>
 						<th class="sort-col text-center"><b>用户名</b></th>
 						<th class="d-md-table-cell d-lg-table-cell sort-col text-center"><b>邮箱</b></th>
-						<th class="sort-col text-center"><b>国家</b></th>
-						<th class="sort-col text-center px-0"><b>管理员</b></th>
-						<th class="sort-col text-center px-0"><b>已验证</b></th>
-						<th class="sort-col text-center px-0"><b>隐藏</b></th>
-						<th class="sort-col text-center px-0"><b>封禁状态</b></th>
+						<th class="sort-col text-center"><b>地区</b></th>
+						<th class="sort-col text-center px-0"><b>管理</b></th>
+						<th class="sort-col text-center px-0"><b>邮箱认证</b></th>
+						<th class="sort-col text-center px-0"><b>是否隐藏</b></th>
+						<th class="sort-col text-center px-0"><b>是否封禁</b></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -126,22 +126,22 @@
 						</td>
 						<td class="team-admin d-md-table-cell d-lg-table-cell text-center" value="{{ user.type }}">
 							{% if user.type == 'admin' %}
-								<span class="badge badge-primary">admin</span>
+								<span class="badge badge-primary">管理</span>
 							{% endif %}
 						</td>
 						<td class="team-verified d-md-table-cell d-lg-table-cell text-center" value="{{ user.verified }}">
 							{% if user.verified %}
-								<span class="badge badge-success">verified</span>
+								<span class="badge badge-success">已认证</span>
 							{% endif %}
 						</td>
 						<td class="team-hidden d-md-table-cell d-lg-table-cell text-center" value="{{ user.hidden }}">
 							{% if user.hidden %}
-								<span class="badge badge-danger">hidden</span>
+								<span class="badge badge-danger">隐藏</span>
 							{% endif %}
 						</td>
 						<td class="team-banned d-md-table-cell d-lg-table-cell text-center" value="{{ user.banned }}">
 							{% if user.banned %}
-								<span class="badge badge-danger">banned</span>
+								<span class="badge badge-danger">封禁</span>
 							{% endif %}
 						</td>
 					</tr>
@@ -149,7 +149,7 @@
 				</tbody>
 			</table>
 			{% if users.pages > 1 %}
-			<div class="text-center">Page
+			<div class="text-center">页码
 				<br>
 				{% if users.page != 1 %}
 				<a href="{{ prev_page }}">&lt;&lt;&lt;</a>

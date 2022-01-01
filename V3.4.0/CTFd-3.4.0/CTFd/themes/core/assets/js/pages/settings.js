@@ -13,8 +13,8 @@ const error_template =
 
 const success_template =
   '<div class="alert alert-success alert-dismissable submit-row" role="alert">\n' +
-  "  <strong>Success!</strong>\n" +
-  "   Your profile has been updated\n" +
+  "  <strong>成功!</strong>\n" +
+  "   您的个人信息已更新\n" +
   '  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>\n' +
   "</div>";
 

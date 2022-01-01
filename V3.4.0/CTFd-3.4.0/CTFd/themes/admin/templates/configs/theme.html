@@ -4,7 +4,7 @@
 			<label for="ctf_logo">
 				Logo
 				<small class="form-text text-muted">
-					网站的徽标
+					网站的Logo，不是网站的名字.
 				</small>
 			</label>
 
@@ -14,7 +14,7 @@
 						 src="{{ url_for('views.files', path=ctf_logo) }}"
 						 height="80">
 					<button type="button" id="remove-logo" class="btn-sm btn-danger">
-						移除Logo
+						移除 Logo
 					</button>
 				</div>
 			{% endif %}
@@ -37,9 +37,9 @@
 	<form id="ctf-small-icon-upload" class="form-upload" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="small_icon">
-				Ico图标
+				小图标
 				<small class="form-text text-muted">
-					<a href='https://en.wikipedia.org/wiki/Favicon' target='_blank'>favicon</a> 浏览器显示的ico，必须是png格式，大小为32x32px.
+					<a href='https://en.wikipedia.org/wiki/Favicon' target='_blank'>favicon</a> 用户浏览器标签做侧小图标，必须是png格式，大小是32x32px.
 				</small>
 			</label>
 
@@ -49,14 +49,14 @@
 						 src="{{ url_for('views.files', path=ctf_small_icon) }}"
 						 height="32">
 					<button type="button" id="remove-small-icon" class="btn-sm btn-danger">
-						移除Ico
+						移除 Icon
 					</button>
 				</div>
 			{% endif %}
 
 			<div class="row">
 				<div class="col-md-9">
-					<input class="form-control-file" id="ctf_small_icon_file" name='file' type='file' accept=".png" placeholder="Small Icon">
+					<input class="form-control-file" id="ctf_small_icon_file" name='file' type='file' accept=".png" placeholder="小图标">
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
@@ -75,7 +75,7 @@
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Theme Settings</h5>
+					<h5 class="modal-title">主题设置</h5>
 				</div>
 				<div class="modal-body">
 				{% include ctf_theme + "/config.html" ignore missing %}
@@ -89,7 +89,7 @@
 			<label for="ctf_theme">
 				主题
 				<small class="form-text text-muted">
-					切换主题以改变CTFd的样子
+					切换主题
 				</small>
 			</label>
 			<select class="form-control custom-select" id="ctf_theme" name="ctf_theme">
@@ -102,23 +102,23 @@
 
 		<div class="form-group">
 			<label>
-				主题配色
+				主题颜色
 				<small class="form-text text-muted">
-					控制主题的颜色，需要主题支持
+					控制主题的颜色，需要主题支持修改颜色，不然无效.
 				</small>
 			</label>
 			<div class="d-inline-block">
 				<input type="color" id="config-color-picker">
-				<button type="button" class="btn-sm btn-primary" id="config-color-update">上传CSS</button>
+				<button type="button" class="btn-sm btn-primary" id="config-color-update">更新 CSS</button>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label>
-				主题Header设置
+				主题标头
 				<small class="form-text text-muted">
-					Theme headers are inserted just before the <code>&lt;/head&gt;</code> tag on all public facing pages.
-					需要主题支持。
+					主题标头将会插入到 <code>&lt;/head&gt;</code> 标签，在所有的可见页面中.
+					需要主题支持.
 				</small>
 			</label>
 			<textarea class="form-control" id="theme-header" name="theme_header" rows="7">{{ theme_header or "" }}</textarea>
@@ -126,10 +126,10 @@
 
 		<div class="form-group">
 			<label>
-				主题Footer设置
+				主题页脚
 				<small class="form-text text-muted">
-					Theme footers are inserted just before the <code>&lt;/body&gt;</code> tag on all public facing pages.
-					需要主题支持。
+					主题页脚将会插入到 <code>&lt;/body&gt;</code> 标签，在所有可见页面中.
+					需要主题支持.
 				</small>
 			</label>
 			<textarea class="form-control" id="theme-footer" name="theme_footer" rows="7">{{ theme_footer or "" }}</textarea>
@@ -137,19 +137,19 @@
 
 		<div class="form-group">
 			<label for="ctf_theme">
-				主题编辑
+				主题设置
 			</label>
 			<div class="d-block pb-2">
 				<button type="button" class="btn-sm btn-primary" id="theme-settings-button">
-					设置编辑器
+					编辑器设置
 				</button>
 			</div>
 			<textarea class="form-control" id="theme-settings" name="theme_settings" rows="7">{{ theme_settings or "" }}</textarea>
 			<small class="form-text text-muted">
-				特定于主题的设置
+				主题的特定设置。
 			</small>
 		</div>
 
-		<button type="submit" class="btn btn-md btn-primary float-right">Update</button>
+		<button type="submit" class="btn btn-md btn-primary float-right">更新</button>
 	</form>
 </div>

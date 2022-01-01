@@ -56,7 +56,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-action text-center w-100">电子邮件用户</h2>
+				<h2 class="modal-action text-center w-100">用户邮箱</h2>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -120,7 +120,7 @@
 		<h2 id="team-email" class="text-center">{{ user.email }}</h2>
 		{% if user.oauth_id %}
 			<a href="https://majorleaguecyber.org/u/{{ user.name }}">
-				<h3><span class="badge badge-primary">Official</span></h3>
+				<h3><span class="badge badge-primary">官方</span></h3>
 			</a>
 		{% endif %}
 
@@ -140,14 +140,15 @@
 
 		<h3 id="team-place" class="text-center">
 			{% if place %}
+				<small>第</small>
 				{{ place }}
-				<small>place</small>
+				<small>名</small>
 			{% endif %}
 		</h3>
 		<h3 id="team-score" class="text-center">
 			{% if score %}
+			<small>得分</small>
 				{{ score }}
-				<small>points</small>
 			{% endif %}
 		</h3>
 		<hr class="w-50">
@@ -162,7 +163,7 @@
 				<i class="btn-fa fas fa-trophy fa-2x px-2" data-toggle="tooltip" data-placement="top" title="奖励用户"></i>
 			</a>
 			<a class="email-user text-dark">
-				<i class="btn-fa fas fa-envelope fa-2x px-2" data-toggle="tooltip" data-placement="top" title="发邮件给该用户"></i>
+				<i class="btn-fa fas fa-envelope fa-2x px-2" data-toggle="tooltip" data-placement="top" title="用户邮箱"></i>
 			</a>
 			<a class="delete-user text-dark">
 				<i class="btn-fa fas fa-trash-alt fa-2x px-2" data-toggle="tooltip" data-placement="top" title="删除用户"></i>
@@ -185,21 +186,21 @@
 <div class="container">
 	<nav class="nav nav-tabs nav-fill pt-5" id="myTab" role="tablist">
 		<a class="nav-item nav-link active" id="nav-solves-tab" data-toggle="tab" href="#nav-solves" role="tab"
-		   aria-controls="nav-solves" aria-selected="true">成功</a>
+		   aria-controls="nav-solves" aria-selected="true">解决</a>
 
 		<a class="nav-item nav-link" id="nav-wrong-tab" data-toggle="tab" href="#nav-wrong" role="tab"
 		   aria-controls="nav-wrong" aria-selected="false">失败</a>
 
 		<a class="nav-item nav-link" id="nav-awards-tab" data-toggle="tab" href="#nav-awards" role="tab"
-		   aria-controls="nav-awards" aria-selected="false">奖励</a>
+		   aria-controls="nav-awards" aria-selected="false">奖项</a>
 
 		<a class="nav-item nav-link" id="nav-missing-tab" data-toggle="tab" href="#nav-missing" role="tab"
-		   aria-controls="nav-missing" aria-selected="false">未作答</a>
+		   aria-controls="nav-missing" aria-selected="false">错过</a>
 	</nav>
 
 	<div class="tab-content min-vh-25 pb-5" id="nav-tabContent">
 		<div class="tab-pane fade show active" id="nav-solves" role="tabpanel" aria-labelledby="nav-solves-tab">
-			<h3 class="text-center pt-5 d-block">成功</h3>
+			<h3 class="text-center pt-5 d-block">解决</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="float-right pb-3">
@@ -221,11 +222,11 @@
 									<input type="checkbox" class="form-check-input" data-checkbox-all>&nbsp;
 								</div>
 							</th>
-							<th class="sort-col text-center"><b>题目</b></th>
-							<th class="sort-col text-center"><b>提交</b></th>
-							<th class="sort-col text-center"><b>类别</b></th>
-							<th class="sort-col text-center"><b>价值</b></th>
-							<th class="sort-col text-center"><b>用时</b></th>
+							<th class="sort-col text-center"><b>挑战</b></th>
+							<th class="sort-col text-center"><b>提交内容</b></th>
+							<th class="sort-col text-center"><b>分类</b></th>
+							<th class="sort-col text-center"><b>分值</b></th>
+							<th class="sort-col text-center"><b>完成时间</b></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -280,7 +281,7 @@
 										<input type="checkbox" class="form-check-input" data-checkbox-all>&nbsp;
 									</div>
 								</th>
-								<th class="sort-col text-center"><b>题目</b></th>
+								<th class="sort-col text-center"><b>挑战</b></th>
 								<th class="sort-col text-center"><b>提交内容</b></th>
 								<th class="sort-col text-center"><b>时间</b></th>
 							</tr>
@@ -315,7 +316,7 @@
 		</div>
 
 		<div class="tab-pane fade" id="nav-awards" role="tabpanel" aria-labelledby="nav-awards-tab">
-			<h3 class="text-center pt-5 d-block">Awards</h3>
+			<h3 class="text-center pt-5 d-block">奖项</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="float-right pb-3">
@@ -337,12 +338,12 @@
 										<input type="checkbox" class="form-check-input" data-checkbox-all>&nbsp;
 									</div>
 								</th>
-								<th class="sort-col text-center"><b>名字</b></th>
+								<th class="sort-col text-center"><b>获奖名称</b></th>
 								<th class="sort-col text-center"><b>描述</b></th>
 								<th class="sort-col text-center"><b>日期</b></th>
-								<th class="sort-col text-center"><b>价值</b></th>
-								<th class="sort-col text-center"><b>类别</b></th>
-								<th class="sort-col text-center"><b>Icon</b></th>
+								<th class="sort-col text-center"><b>分值</b></th>
+								<th class="sort-col text-center"><b>奖项类别</b></th>
+								<th class="sort-col text-center"><b>勋章</b></th>
 							</tr>
 						</thead>
 						<tbody id="awards-body">
@@ -370,7 +371,7 @@
 		</div>
 
 		<div class="tab-pane fade" id="nav-missing" role="tabpanel" aria-labelledby="nav-missing-tab">
-			<h3 class="text-center pt-5 d-block">未作答</h3>
+			<h3 class="text-center pt-5 d-block">错过</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="float-right pb-3">
@@ -392,9 +393,9 @@
 									<input type="checkbox" class="form-check-input" data-checkbox-all>&nbsp;
 								</div>
 							</th>
-							<th class="sort-col text-center"><b>题目</b></th>
+							<th class="sort-col text-center"><b>挑战</b></th>
 							<th class="sort-col text-center"><b>类别</b></th>
-							<th class="sort-col text-center"><b>价值</b></th>
+							<th class="sort-col text-center"><b>分值</b></th>
 						</tr>
 					</thead>
 					<tbody>

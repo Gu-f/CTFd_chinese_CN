@@ -2,8 +2,8 @@
 	<form id="user-mode-form" method="POST" autocomplete="off" class="w-100 custom-config-form">
 		<div class="form-group">
 			<label for="ctf_name">
-				用户设置
-				<small class="form-text text-muted">控制用户是以团队形式加入游戏（团队模式）还是以个人形式参与游戏（个人模式）</small>
+				用户模式
+				<small class="form-text text-muted">控制用户是以团队形式加入游戏（团队模式）还是以自己的身份参与游戏（个人模式）</small>
 			</label>
 
 			<div class="row pt-3">
@@ -16,14 +16,14 @@
 									<div class="form-check">
 										<input class="form-check-input card-radio-clone" type="radio" style="visibility: hidden;" checked>
 										<span class="form-check-label text-center">
-											<h5>团队设置</h5>
+											<h5>团队模式</h5>
 										</span>
 										<ul class="p-0 small">
-											<li>选手注册帐户并组成小组</li>
-											<li>如果团队的一个人解出答案，则全队可得分</li>
+											<li>参与者注册账户并组成小队</li>
+											<li>如果团队中的某个成员完成了一个挑战，整个团队都会获得积分</li>
 											<br>
-											<li>更容易看到哪个团队成员解决了挑战</li>
-											<li>但是可能更难管理</li>
+											<li>更容易看到哪个团队成员完成了挑战</li>
+											<li>但是管理员可能更难去管理</li>
 										</ul>
 									</div>
 								</span>
@@ -40,14 +40,14 @@
 									<div class="form-check">
 										<input class="form-check-input card-radio-clone" type="radio" style="visibility: hidden;" checked>
 										<span class="form-check-label text-center">
-											<h5>个人设置</h5>
+											<h5>个人模式</h5>
 										</span>
 										<ul class="p-0 small">
-											<li>选手仅注册个人账户t</li>
-											<li>玩家可以共享帐户以组成虚拟团队</li>
+											<li>参与者仅能注册自己的个人账户</li>
+											<li>玩家可以共享账户以组成虚拟团队</li>
 											<br>
-											<li>更容易组织</li>
-											<li>难以将功劳归于解出答案的那个逼</li>
+											<li>更容易组织和管理</li>
+											<li>将解决方案定位到单个团队成员是困难的</li>
 										</ul>
 									</div>
 								</span>
@@ -60,13 +60,13 @@
 
 		<div class="alert alert-danger text-center" role="alert">
 			<p>
-				<strong>更改用户模式还将删除用户执行操作的所有提交或记录</strong>
-				<br><small>（提交、奖励、解锁、跟踪）</small>
+				<strong>更改用户模式将删除用户执行操作的所有提交和记录</strong>
+				<br><small>(提交, 奖项, 解锁, 追踪)</small>
 			</p>
 		</div>
 
 		<button type="submit" class="btn btn-md btn-primary float-right">
-			Update
+			更新
 		</button>
 	</form>
 </div>

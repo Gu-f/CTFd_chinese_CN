@@ -6,7 +6,7 @@
 {% block content %}
 	<div class="jumbotron">
 		<div class="container">
-			<h1>验证</h1>
+			<h1>Confirm</h1>
 		</div>
 	</div>
 	<div class="container">
@@ -15,20 +15,20 @@
 				{% include "components/errors.html" %}
 
 				<h5 class="text-center">
-					我们已向您的电子邮件地址发送确认电子邮件。
+					We've sent a confirmation email to your email address.
 				</h5>
 
 				<br>
 
 				<h5 class="text-center">
-					请单击该电子邮件中的链接以确认您的帐户。
+					Please click the link in that email to confirm your account.
 				</h5>
 
 				<br>
 
 				<h5 class="text-center">
-					如果电子邮件未送达，请检查您的垃圾邮件文件夹
-					或请与管理员联系以手动验证您的帐户。
+					If the email doesn’t arrive, check your spam folder or
+					contact an administrator to manually verify your account.
 				</h5>
 
 				<hr>
@@ -41,7 +41,7 @@
 						</div>
 						<div class="col-md-6">
 							<a href="{{ url_for('views.settings') }}" class="btn btn-md btn-secondary btn-outlined w-100">
-								更改电子邮件地址
+								Change Email Address
 							</a>
 						</div>
 						{{ form.nonce() }}

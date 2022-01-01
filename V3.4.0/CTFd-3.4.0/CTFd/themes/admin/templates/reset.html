@@ -6,7 +6,7 @@
 {% block content %}
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Reset</h1>
+			<h1>重置</h1>
 		</div>
 	</div>
 	<div class="container">
@@ -16,21 +16,20 @@
 				<form method="POST" id="reset-ctf-form">
 					<div class="alert alert-danger" role="alert">
 						<p>
-							Resetting your CTFd instance allows you to bulk delete data to prepare it for other events,
-							other classes, or to otherwise get it to a clean state.
+							重置CTFd实例允许您批量删除数据，以便为其他比赛做好准备,使其处于干净状态
 						</p>
 
 						<p>
-							Resetting your CTFd instance will delete the selected data <strong>PERMANENTLY</strong>.
+							重置CTFd实例将删除所有数据 <strong>永久地</strong>.
 						</p>
 
 						<p>
-							Think carefully before resetting because no automated backups are made and all selected data will be lost.
+							重置前请仔细考虑，因为不会进行自动备份，所有数据都将丢失。
 						</p>
 
 						<span>
 							<strong>
-								Create backups of all data you need by <a href="{{ url_for('admin.config', _anchor='backup') }}">creating a CTFd Export</a>
+								如果需要可以先创建重要数据的备份 <a href="{{ url_for('admin.config', _anchor='backup') }}">使用CTFd导出功能</a>
 							</strong>
 						</span>
 					</div>
@@ -43,8 +42,8 @@
 							{{ form.accounts.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							Deletes all user and team accounts and their associated information<br>
-							<small>(Users, Teams, Submissions, Tracking)</small>
+							删除所有用户和团队帐户及其关联信息<br>
+							<small>(用户, 团队, 提交, 追踪)</small>
 						</span>
 					</div>
 
@@ -54,8 +53,8 @@
 							{{ form.submissions.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							Deletes all records that accounts gained points or took an action<br>
-							<small>(Submissions, Awards, Unlocks, Tracking)</small>
+							删除所有记录，记录获得的分数以及进度<br>
+							<small>(提交, 奖项, 解锁, 追踪)</small>
 						</span>
 					</div>
 
@@ -65,8 +64,8 @@
 							{{ form.challenges.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							Deletes all challenges and associated data<br>
-							<small>(Challenges, Flags, Hints, Tags, Challenge Files)</small>
+							删除所有与挑战相关数据<br>
+							<small>(挑战, Flags, 提示, 标签, 挑战文件)</small>
 						</span>
 					</div>
 
@@ -76,8 +75,8 @@
 							{{ form.pages.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							Deletes all pages and their associated files<br>
-							<small>(Pages, Page Files)</small>
+							删除所有页面及其管理文件<br>
+							<small>(页面, 页面文件)</small>
 						</span>
 					</div>
 
@@ -87,8 +86,8 @@
 							{{ form.notifications.label(class="form-check-label") }}
 						</div>
 						<span class="text-muted">
-							Deletes all notifications<br>
-							<small>(Notifications)</small>
+							删除所有公告<br>
+							<small>(公告)</small>
 						</span>
 					</div>
 

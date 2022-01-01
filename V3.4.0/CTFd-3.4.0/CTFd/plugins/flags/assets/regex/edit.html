@@ -1,0 +1,19 @@
+<label>
+	正则匹配<br>
+	<small>输入正则表达式</small>
+</label>
+<div class="form-group">
+	<input type="text" class="form-control" name="content" value="{{ content }}">
+</div>
+<div class="form-group">
+	<select class="form-control custom-select col-md-6" name="data">
+		<option value="">区分大小写</option>
+		<option value="case_insensitive" {% if data %}selected{% endif %}>不区分大小写</option>
+	</select>
+</div>
+<input type="hidden" name="type" value="regex">
+<input type="hidden" name="id" value="{{ id }}">
+<hr>
+<div class="form-group">
+	<button class="btn btn-success float-right">更新</button>
+</div>

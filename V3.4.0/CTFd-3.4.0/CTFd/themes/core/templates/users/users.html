@@ -6,7 +6,7 @@
 {% block content %}
 	<div class="jumbotron">
 		<div class="container">
-			<h1>用户</h1>
+			<h1>用户列表</h1>
 		</div>
 	</div>
 	<div class="container">
@@ -14,10 +14,10 @@
 			<div class="col-md-12">
 				{% if q and field %}
 				<h5 class="text-muted text-center">
-					Searching for users with <strong>{{ field }}</strong> matching <strong>{{ q }}</strong>
+					搜索字段 <strong>{{ field_CN }}</strong> 为 <strong>{{ q }}</strong> 的结果
 				</h5>
 				<h6 class="text-muted text-center pb-3">
-					Page {{ users.page }} of {{ users.total }} results
+					第 {{ users.page }} 页，共 {{ users.total }} 条结果
 				</h6>
 				{% endif %}
 
@@ -27,7 +27,7 @@
 						{{ form.field(class="form-control custom-select w-100") }}
 					</div>
 					<div class="form-group col-md-8">
-						{{ form.q(class="form-control w-100", placeholder="搜索具有匹配项的用户") }}
+						{{ form.q(class="form-control w-100", placeholder="搜索匹配的用户") }}
 					</div>
 					<div class="form-group col-md-2">
 						<button type="submit" class="btn btn-primary w-100">
@@ -47,9 +47,9 @@
 					<thead>
 					<tr>
 						<td><b>用户</b></td>
-						<td><b>Web</b></td>
-						<td class="d-none d-md-table-cell d-lg-table-cell"><b>单位</b></td>
-						<td class="d-none d-md-table-cell d-lg-table-cell"><b>国家</b></td>
+						<td><b>Blog</b></td>
+						<td class="d-none d-md-table-cell d-lg-table-cell"><b>单位/组织</b></td>
+						<td class="d-none d-md-table-cell d-lg-table-cell"><b>地区</b></td>
 					</tr>
 					</thead>
 					<tbody>
@@ -65,7 +65,7 @@
 								{% endif %}
 								{% if user.oauth_id %}
 									<a href="https://majorleaguecyber.org/u/{{ user.name }}">
-										<span class="badge badge-primary">Official</span>
+										<span class="badge badge-primary">官方</span>
 									</a>
 								{% endif %}
 							</td>
@@ -107,7 +107,7 @@
 		{% if users.pages > 1 %}
 			<div class="row">
 				<div class="col-md-12">
-					<div class="text-center">Page
+					<div class="text-center">页码
 						<br>
 						{% if users.page != 1 %}
 						<a href="{{ prev_page }}">&lt;&lt;&lt;</a>

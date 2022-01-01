@@ -3,8 +3,8 @@
     <table id="filesboard" class="table table-striped">
       <thead>
         <tr>
-          <td class="text-center"><b>File</b></td>
-          <td class="text-center"><b>Settings</b></td>
+          <td class="text-center"><b>文件</b></td>
+          <td class="text-center"><b>设置</b></td>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +38,7 @@
             type="file"
           />
           <sub class="text-muted">
-            Attach multiple files using Control+Click or Cmd+Click.
+            使用 Control键+鼠标左键 或 Cmd键+鼠标左键 进行附加上传多个文件.
           </sub>
         </div>
         <div class="form-group">

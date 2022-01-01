@@ -3,9 +3,9 @@
 
 		<div class="form-group">
 			<label>
-				Client ID
+				客户端 ID
 				<small class="form-text text-muted">
-					OAuth Client ID for <a href="https://majorleaguecyber.org/">MajorLeagueCyber</a> integration.
+					<a href="https://majorleaguecyber.org/">MajorLeagueCyber</a> 集成的OAuth的客户端ID.
 				</small>
 			</label>
 			<input class="form-control" id='oauth_client_id' name='oauth_client_id' type='text'
@@ -15,9 +15,9 @@
 
 		<div class="form-group">
 			<label>
-				Client Secret
+				客户端 Secret
 				<small class="form-text text-muted">
-					OAuth Client Secret for <a href="https://majorleaguecyber.org/">MajorLeagueCyber</a> integration.
+					<a href="https://majorleaguecyber.org/">MajorLeagueCyber</a> 集成的OAuth的客户端Secret.
 				</small>
 			</label>
 			<input class="form-control" id='oauth_client_secret' name='oauth_client_secret' type='text'
@@ -25,6 +25,6 @@
 				   {% if oauth_client_secret is defined and oauth_client_secret != None %}value="{{ oauth_client_secret }}"{% endif %}>
 		</div>
 
-		<button type="submit" class="btn btn-md btn-primary float-right">Update</button>
+		<button type="submit" class="btn btn-md btn-primary float-right">更新</button>
 	</form>
 </div>

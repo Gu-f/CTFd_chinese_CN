@@ -9,19 +9,19 @@
 <div class="container">
 	<div class="row d-flex align-items-center">
 		<div class="col-md-4 text-right">
-			<h5><b>{{ user_count }}</b> users registered</h5>
+			<h5><b>{{ user_count }}</b> 个已注册用户</h5>
 			{% if get_config('user_mode') == 'teams' %}
-			<h5><b>{{ team_count }}</b> teams registered</h5>
+			<h5><b>{{ team_count }}</b> 个已注册团队</h5>
 			{% endif %}
-			<h5><b>{{ ip_count }}</b> IP addresses</h5>
+			<h5><b>{{ ip_count }}</b> 个IP地址</h5>
 			<hr>
-			<h5><b>{{ total_points }}</b> total possible points</h5>
-			<h5><b>{{ challenge_count }}</b> challenges</h5>
+			<h5><b>{{ total_points }}</b> 分的可得分值</h5>
+			<h5><b>{{ challenge_count }}</b> 个挑战</h5>
 			{% if most_solved %}
-				<h5><b>{{ most_solved }}</b> has the most solves with <br>{{ solve_data[most_solved] }} solves</h5>
+				<h5><b>{{ most_solved }}</b> 最多人解决，共 <br>{{ solve_data[most_solved] }} 人解决</h5>
 			{% endif %}
 			{% if least_solved %}
-			<h5><b>{{ least_solved }}</b> has the least solves with <br>{{ solve_data[least_solved] }} solves</h5>
+			<h5><b>{{ least_solved }}</b> 最少人解决，共 <br>{{ solve_data[least_solved] }} 人解决</h5>
 			{% endif %}
 		</div>
 

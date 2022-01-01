@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Admin Panel</title>
+	<title>管理面板</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="{{ url_for('views.themes', theme='core', path='img/favicon.ico') }}" type="image/x-icon">
@@ -44,31 +44,31 @@
 			<div class="collapse navbar-collapse" id="base-navbars">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.statistics') }}">统计</a></li>
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.notifications') }}">公告</a>
+					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.notifications') }}">公告管理</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">页面</a>
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">页面管理</a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="{{ url_for('admin.pages_listing') }}">所有页面</a>
-							<a class="dropdown-item" href="{{ url_for('admin.pages_new') }}">新页面</a>
+							<a class="dropdown-item" href="{{ url_for('admin.pages_new') }}">新建页面</a>
 						</div>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.users_listing') }}">用户</a></li>
+					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.users_listing') }}">用户管理</a></li>
 					{% if get_config('user_mode') == 'teams' %}
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.teams_listing') }}">团队</a></li>
+					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.teams_listing') }}">团队管理</a></li>
 					{% endif %}
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.scoreboard_listing') }}">计分板</a></li>
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.challenges_listing') }}">题目</a></li>
+					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.scoreboard_listing') }}">排行榜管理</a></li>
+					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.challenges_listing') }}">挑战管理</a></li>
 					<li class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-						   aria-haspopup="true" aria-expanded="true">作答情况</a>
+						   aria-haspopup="true" aria-expanded="true">解答提交管理</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="{{ url_for('admin.submissions_listing') }}">所有作答</a>
-							<a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='correct') }}">正确作答</a>
-							<a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='incorrect') }}">错误作答</a>
+							<a class="dropdown-item" href="{{ url_for('admin.submissions_listing') }}">所有提交</a>
+							<a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='correct') }}">正确提交</a>
+							<a class="dropdown-item" href="{{ url_for('admin.submissions_listing', submission_type='incorrect') }}">错误提交</a>
 						</div>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.config') }}">配置</a></li>
+					<li class="nav-item"><a class="nav-link" href="{{ url_for('admin.config') }}">设置</a></li>
 
 					{% set plugin_menu = get_admin_plugin_menu_bar() %}
 					{% set plugins = get_configurable_plugins() %}
@@ -88,7 +88,7 @@
 
 						{% if plugins %}
 						<li class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">插件管理 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 									{% for plugin in plugins %}
 											<a class="dropdown-item" href="{{ request.script_root }}{{ plugin.route }}">{{ plugin.name }}</a>
@@ -115,7 +115,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<a class="btn btn-warning" href="{{ get_config('version_latest') }}">
-						A new CTFd version is available!
+						有新的CTFd版本可用!
 					</a>
 				</div>
 			</div>

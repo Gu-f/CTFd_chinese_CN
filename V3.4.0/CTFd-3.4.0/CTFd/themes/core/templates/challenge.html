@@ -6,13 +6,13 @@
 			</button>
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
-					<a class="nav-link active" href="#challenge">Challenge</a>
+					<a class="nav-link active" href="#challenge">挑战</a>
 				</li>
 				{% block solves %}
 					<li class="nav-item">
 						<a class="nav-link challenge-solves" href="#solves">
 							{% if solves != None %}
-								{{ solves }} {% if solves > 1 %}Solves{% else %}Solves{% endif %}
+								{{ solves }} {% if solves > 1 %}解决{% else %}解决{% endif %}
 							{% endif %}
 						</a>
 					</li>
@@ -56,16 +56,16 @@
 									<a class="btn btn-info btn-hint btn-block load-hint" href="javascript:;" data-hint-id="{{ hint.id }}">
 										{% if hint.content %}
 											<small>
-												View Hint
+												查看提示
 											</small>
 										{% else %}
 											{% if hint.cost %}
 												<small>
-													Unlock Hint for {{ hint.cost }} points
+													查看提示将会扣除 {{ hint.cost }} 分
 												</small>
 											{% else %}
 												<small>
-													View Hint
+													查看提示
 												</small>
 											{% endif %}
 										{% endif %}
@@ -115,7 +115,7 @@
 							<div class="col-md-3 form-group key-submit">
 								{% block submit %}
 								<button id="challenge-submit" class="challenge-submit" type="submit">
-									Submit
+									提交
 								</button>
 								{% endblock %}
 							</div>
@@ -137,9 +137,9 @@
 								<table class="table table-striped text-center">
 									<thead>
 									<tr>
-										<td><b>Name</b>
+										<td><b>用户名</b>
 										</td>
-										<td><b>Date</b>
+										<td><b>解决时间</b>
 										</td>
 									</tr>
 									</thead>
