@@ -5,7 +5,8 @@ Time-Line:
 + 更新CTFd-V3.1.0版本汉化，同时主题上优化了大陆上访问CTFd资源无法加载导致的卡顿问题
 + ~~更新CTFd-V3.1.1版本汉化~~  
 + 更新CTFd-V3.1.1版本汉化独立包  
-+ 更新CTFd-V3.4.0版本汉化包(admin/core), 同时优化大陆访问字体资源导致的卡顿问题  
++ ~~更新CTFd-V3.4.0版本汉化包(admin/core), 同时优化大陆访问字体资源导致的卡顿问题~~ 此次的汉化文件以调整V3.4.0/CTFd-3.4.0/CTFd_old文件夹  
++ 更新CTFd V3.4.0版本汉化包本次更新基于代码层面进行了汉化，优化了卡顿，个人模式汉化覆盖率99%，团队模式汉化覆盖率80%
 
 # 文件解读：
 最新版请访问： https://github.com/CTFd/CTFd   
@@ -31,13 +32,21 @@ CTFd-V3.1.1：直接进行覆盖即可（修改了CDN优化国内访问）
 感谢mlzxgzy提供此版本汉化文件  
 
 ### V3.4.0
-CTFd-V3.4.0：直接进行覆盖即可（修改了CDN优化国内访问）  
-截至到readme更新时间，汉化未进行至100%，主要位置已汉化完成，经测试不影响正常使用  
-感谢mcyydscc提供此版本汉化文件
+~~CTFd-V3.4.0：直接进行覆盖即可（修改了CDN优化国内访问）~~  
+~~截至到readme更新时间，汉化未进行至100%，主要位置已汉化完成，经测试不影响正常使用~~  
+感谢mcyydscc提供此版本汉化文件  
+通过review上个版本汉化，对汉化内容做了调整  
+最新汉化文件所在GitHub中的目录为V3.4.0/CTFd-3.4.0/CTFd，上一版本已调整为CTFd_old
+本次更新为基于代码层面汉化，个人模式汉化覆盖率99%，团队模式汉化覆盖率80%，并做了CDN优化
 
 # 使用方法：
 
-## 方法一：
+## V3.4.0版本使用方法：  
+由于该版本汉化调整了python代码，来达到99%的汉化覆盖率，因此需要将整个CTFd文件进行覆盖  
+将GitHub中的目录为V3.4.0/CTFd-3.4.0/CTFd内所有文件覆盖到<ctfd_project>/CTFd文件即可  
+建议下载release的zip包，来减少冗余代码的下载，提高速度。release的zip包，只包含CTFd文件。  
+
+## 方法一：  
 将core_chinese文件直接放入 CTFd\\CTFd\\themes目录即可在更换主题处找到该中文主题  
 core_english文件同理  
 ## 方法二(推荐)：
@@ -47,6 +56,10 @@ themes文件直接替换CTFd\\CTFd目录下的themes内的所有文件即可完�
 ![img](/image/index.jpg)  
 
 ![img](/image/admin.jpg)  
+
+![img](/image/admin2.jpg)  
+
+![img](/image/v3.4.0config.jpg)  
 
 ![img](/image/config.jpg)  
 
