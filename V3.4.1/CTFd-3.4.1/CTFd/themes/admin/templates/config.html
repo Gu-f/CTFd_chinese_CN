@@ -1,0 +1,104 @@
+{% extends "admin/base.html" %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('views.themes', theme='admin', path='css/codemirror.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>配置</h1>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-item">
+					<a class="nav-link rounded-0 active" href="#appearance" role="tab" data-toggle="tab">外观</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#theme" role="tab" data-toggle="tab">主题</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#accounts" role="tab" data-toggle="tab">账户</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#fields" role="tab" data-toggle="tab">自定义字段</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#mlc" role="tab" data-toggle="tab">MajorLeagueCyber</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#settings" role="tab" data-toggle="tab">设置</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#security" role="tab" data-toggle="tab">安全</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#email" role="tab" data-toggle="tab">邮箱</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#ctftime" role="tab" data-toggle="tab">时间</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#legal" role="tab" data-toggle="tab">服务条款和隐私政策</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#backup" role="tab" data-toggle="tab">备份</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="#usermode" role="tab" data-toggle="tab">用户模式</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link rounded-0" href="{{ url_for('admin.reset') }}" role="tab">重置</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-9">
+			{% for error in errors %}
+				<div class="alert alert-danger alert-dismissable" role="alert">
+					<span class="sr-only">错误:</span>
+					{{ error }}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+			{% endfor %}
+
+			<div class="tab-content">
+				{% include "admin/configs/appearance.html" %}
+
+				{% include "admin/configs/theme.html" %}
+
+				{% include "admin/configs/accounts.html" %}
+
+				{% include "admin/configs/fields.html" %}
+
+				{% include "admin/configs/mlc.html" %}
+
+				{% include "admin/configs/settings.html" %}
+
+				{% include "admin/configs/security.html" %}
+
+				{% include "admin/configs/email.html" %}
+
+				{% include "admin/configs/time.html" %}
+
+				{% include "admin/configs/legal.html" %}
+
+				{% include "admin/configs/backup.html" %}
+
+				{% include "admin/configs/usermode.html" %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block entrypoint %}
+	<script defer src="{{ url_for('views.themes', theme='admin', path='js/pages/configs.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "admin/base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>创建挑战</h1>
+	</div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" role="dialog" id="challenge-create-options">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">选项</h5>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form method="POST" enctype="multipart/form-data">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-8">
+								<label>
+									Flag:<br>
+									<small class="form-text text-muted">你挑战的静态Flag</small>
+								</label>
+								<input type="text" class="form-control" name="flag">
+							</div>
+							<div class="col-md-4">
+								<label>
+									&nbsp;
+									<small class="form-text text-muted">&nbsp;</small>
+								</label>
+								<select class="form-control custom-select w-100" name="flag_data">
+									<option value="">区分大小写</option>
+									<option value="case_insensitive">不区分大小写</option>
+								</select>
+							</div>
+						</div>
+						<input type="hidden" name="flag_type" value="static">
+					</div>
+					<div class="form-group">
+						<div class="form-group">
+							<label>
+								文件:
+								<small class="form-text text-muted">该项挑战所带的附件</small>
+							</label>
+							<input class="form-control-file" type="file" name="file" multiple="multiple">
+							<sub class="text-muted">使用 Control键+鼠标左键 或 Cmd键+鼠标左键 进行附加上传多个文件</sub>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>
+							挑战状态<br>
+							<small class="form-text text-muted">用户是否能看到挑战</small>
+						</label>
+						<select class="form-control custom-select" name="state">
+							<option value="visible">显示</option>
+							<option value="hidden" selected>隐藏</option>
+						</select>
+					</div>
+					<input id="challenge_id" type="hidden" name="challenge_id">
+					<div class="form-group">
+						<button class="btn btn-primary float-right create-challenge-submit" type="submit">完成</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3 offset-md-1">
+			<h5 class="text-center pb-3">
+				挑战类别
+			</h5>
+			<div id="create-chals-select">
+				{% for type in types %}
+				<label class="w-100">
+					<input type="radio" name="type" class="card-radio d-none" value="{{ type }}" {% if type == "standard" %}checked{% endif %}/>
+					<div class="card rounded-0">
+						<div class="card-body">
+							<span class="card-title">
+								<div class="form-check">
+									<input class="form-check-input card-radio-clone" type="radio" style="visibility: hidden;" checked>
+									<span class="form-check-label">{% if type == "standard" %}标准{% else %}动态{% endif %}</span>
+								</div>
+							</span>
+						</div>
+					</div>
+				</label>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="col-md-7">
+			<div id="create-chal-entry-div">
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block entrypoint %}
+	<script defer src="{{ url_for('views.themes', theme='admin', path='js/pages/challenge.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>统计</h1>
+	</div>
+</div>
+<div class="container">
+	<div class="row d-flex align-items-center">
+		<div class="col-md-4 text-right">
+			<h5><b>{{ user_count }}</b> 个已注册用户</h5>
+			{% if get_config('user_mode') == 'teams' %}
+			<h5><b>{{ team_count }}</b> 个已注册团队</h5>
+			{% endif %}
+			<h5><b>{{ ip_count }}</b> 个IP地址</h5>
+			<hr>
+			<h5><b>{{ total_points }}</b> 分的可得分值</h5>
+			<h5><b>{{ challenge_count }}</b> 个挑战</h5>
+			{% if most_solved %}
+				<h5><b>{{ most_solved }}</b> 最多人解决，共 <br>{{ solve_data[most_solved] }} 人解决</h5>
+			{% endif %}
+			{% if least_solved %}
+			<h5><b>{{ least_solved }}</b> 最少人解决，共 <br>{{ solve_data[least_solved] }} 人解决</h5>
+			{% endif %}
+		</div>
+
+		<div class="col-md-8">
+			<div id="solves-graph" class="d-flex align-items-center">
+				<div class="text-center w-100">
+					<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div id="score-distribution-graph" class="d-flex align-items-center">
+				<div class="text-center w-100">
+					<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div id="solve-percentages-graph" class="d-flex align-items-center">
+				<div class="text-center w-100">
+					<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div id="keys-pie-graph" class="d-flex align-items-center">
+				<div class="text-center w-100">
+					<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+				</div>
+			</div>
+			<div class="text-center">
+				<h5><b>{{ solve_count }}</b> 正确提交</h5>
+				<h5><b>{{ wrong_count }}</b> 错误提交</h5>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div id="categories-pie-graph" class="d-flex align-items-center">
+				<div class="text-center w-100">
+					<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+	<script defer src="{{ url_for('views.themes', theme='admin', path='js/echarts.bundle.js') }}"></script>
+	<script defer src="{{ url_for('views.themes', theme='admin', path='js/graphs.js') }}"></script>
+{% endblock %}
+
+{% block entrypoint %}
+	<script defer src="{{ url_for('views.themes', theme='admin', path='js/pages/statistics.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "admin/base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1>重置</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				{% with form = Forms.config.ResetInstanceForm() %}
+				<form method="POST" id="reset-ctf-form">
+					<div class="alert alert-danger" role="alert">
+						<p>
+							重置CTFd实例允许您批量删除数据，以便为其他比赛做好准备,使其处于干净状态
+						</p>
+
+						<p>
+							重置CTFd实例将删除所有数据 <strong>永久地</strong>.
+						</p>
+
+						<p>
+							重置前请仔细考虑，因为不会进行自动备份，所有数据都将丢失。
+						</p>
+
+						<span>
+							<strong>
+								如果需要可以先创建重要数据的备份 <a href="{{ url_for('admin.config', _anchor='backup') }}">使用CTFd导出功能</a>
+							</strong>
+						</span>
+					</div>
+
+					<hr>
+
+					<div class="form-group pb-2">
+						<div class="form-check">
+							{{ form.accounts(class="form-check-input") }}
+							{{ form.accounts.label(class="form-check-label") }}
+						</div>
+						<span class="text-muted">
+							删除所有用户和团队帐户及其关联信息<br>
+							<small>(用户, 团队, 提交, 追踪)</small>
+						</span>
+					</div>
+
+					<div class="form-group pb-2">
+						<div class="form-check">
+							{{ form.submissions(class="form-check-input") }}
+							{{ form.submissions.label(class="form-check-label") }}
+						</div>
+						<span class="text-muted">
+							删除所有记录，记录获得的分数以及进度<br>
+							<small>(提交, 奖项, 解锁, 追踪)</small>
+						</span>
+					</div>
+
+					<div class="form-group pb-2">
+						<div class="form-check">
+							{{ form.challenges(class="form-check-input") }}
+							{{ form.challenges.label(class="form-check-label") }}
+						</div>
+						<span class="text-muted">
+							删除所有与挑战相关数据<br>
+							<small>(挑战, Flags, 提示, 标签, 挑战文件)</small>
+						</span>
+					</div>
+
+					<div class="form-group pb-2">
+						<div class="form-check">
+							{{ form.pages(class="form-check-input") }}
+							{{ form.pages.label(class="form-check-label") }}
+						</div>
+						<span class="text-muted">
+							删除所有页面及其管理文件<br>
+							<small>(页面, 页面文件)</small>
+						</span>
+					</div>
+
+					<div class="form-group pb-2">
+						<div class="form-check">
+							{{ form.notifications(class="form-check-input") }}
+							{{ form.notifications.label(class="form-check-label") }}
+						</div>
+						<span class="text-muted">
+							删除所有公告<br>
+							<small>(公告)</small>
+						</span>
+					</div>
+
+					<br>
+
+					{{ form.nonce() }}
+
+					{{ form.submit(class="btn btn-warning btn-lg btn-block") }}
+				</form>
+				{% endwith %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block entrypoint %}
+	<script defer src="{{ url_for('views.themes', theme='admin', path='js/pages/reset.js') }}"></script>
+{% endblock %}

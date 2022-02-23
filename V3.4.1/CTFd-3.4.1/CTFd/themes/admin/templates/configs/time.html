@@ -1,0 +1,223 @@
+<div role="tabpanel" class="tab-pane config-section" id="ctftime">
+	<form method="POST" autocomplete="off" class="w-100">
+		<ul class="nav nav-tabs mb-3">
+			<li class="nav-item">
+				<a class="nav-link active" href="#start-date" aria-controls="start-date" role="tab" data-toggle="tab">
+					开始时间
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#end-date" aria-controls="end-date" role="tab" data-toggle="tab">
+					结束时间
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#freeze-date" aria-controls="freeze-date" role="tab" data-toggle="tab">
+					冻结时间
+				</a>
+			</li>
+		</ul>
+
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="start-date">
+				<div class="row" id="start-date">
+					<div class="col-md-12">
+						<p>比赛开始时间，到时间自动解锁
+							用户将在到时间后可提交答案.</p>
+						<sub class="text-muted text-right mb-3">* 所有时间字段都必填</sub>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="start-month">月:</label>
+						<input class="form-control start-date" id='start-month' min="0" max="12"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="start-day">日:</label>
+						<input class="form-control start-date" id='start-day' min="0" max="31"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="start-year">年:</label>
+						<input class="form-control start-date" id='start-year' type='number'>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="start-hour">时:</label>
+						<input class="form-control start-date" id='start-hour' min="0" max="23"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="start-minute">分:</label>
+						<input class="form-control start-date" id='start-minute' min="0" max="59"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="start-timezone">时区:</label>
+						<select class="form-control custom-select start-date" id="start-timezone">
+						</select>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="start-local">本地时间:</label>
+						<input class="form-control" id='start-local' type='text'
+							   placeholder="开始时间 (本地时间)" readonly>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="start-zonetime">时区时间:</label>
+						<input class="form-control" id='start-zonetime' type='text'
+							   placeholder="开始时间 (时区时间)" readonly>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label>UTC 时间戳:</label>
+						<input class="form-control" id='start' name='start' type='number'
+							   placeholder="开始时间 (UTC 时间戳)"
+							   {% if start is defined and start != None %}value="{{ start }}"{% endif %} readonly>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="end-date">
+				<div class="row" id="end-date">
+					<div class="col-md-12">
+						<p>这是比赛结束时间，到时间后比赛自动关闭
+							用户将无法继续提交答案.</p>
+						<sub class="text-muted text-right mb-3">* 所有时间字段都必填</sub>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="end-month">月:</label>
+						<input class="form-control end-date" id='end-month' min="0" max="12"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="end-day">日:</label>
+						<input class="form-control end-date" id='end-day' min="0" max="31"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="end-year">年:</label>
+						<input class="form-control end-date" id='end-year' type='number'>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="end-hour">时:</label>
+						<input class="form-control end-date" id='end-hour' min="0" max="23"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="end-minute">分:</label>
+						<input class="form-control end-date" id='end-minute' min="0"
+							   max="59" type='number'>
+					</div>
+
+					<div class="form-check">
+						<label>
+							<input id="view_after_ctf" name="view_after_ctf" type="checkbox"
+								   {% if view_after_ctf %}checked{% endif %}>
+							允许在CTF结束时间后查看挑战（不记录提交）.
+						</label>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="end-timezone">时区:</label>
+						<select class="form-control custom-select end-date" id="end-timezone">
+						</select>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="end-local">本地时间:</label>
+						<input class="form-control" id='end-local' type='text'
+							   placeholder="结束时间 (本地时间)" readonly>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="end-zonetime">时区时间:</label>
+						<input class="form-control" id='end-zonetime' type='text'
+							   placeholder="结束时间 (时区时间)" readonly>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="end">UTC 时间戳:</label>
+						<input class="form-control" id='end' name='end' type='number'
+							   placeholder="结束时间 (UTC 时间戳)"
+							   {% if end is defined and end != None %}value="{{ end }}"{% endif %} readonly>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="freeze-date">
+				<div class="row" id="freeze-date">
+					<div class="col-md-12">
+						<p>冻结时间为指定竞赛将冻结到的时间戳.
+							冻结之前的所有提交都显示，冻结之后的提交不显示给用户. </p>
+						<sub class="text-muted text-right mb-3">* 所有时间字段都是必填</sub>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="freeze-month">月:</label>
+						<input class="form-control freeze-date" id='freeze-month' min="0" max="12"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="freeze-day">日:</label>
+						<input class="form-control freeze-date" id='freeze-day' min="0" max="31"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="freeze-year">年:</label>
+						<input class="form-control freeze-date" id='freeze-year' type='number'>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="freeze-hour">时:</label>
+						<input class="form-control freeze-date" id='freeze-hour' min="0" max="23"
+							   type='number'>
+					</div>
+
+					<div class="form-group col-md-2">
+						<label for="freeze-minute">分:</label>
+						<input class="form-control freeze-date" id='freeze-minute' min="0"
+							   max="59" type='number'>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="freeze-timezone">时区:</label>
+						<select class="form-control custom-select freeze-date" id="freeze-timezone">
+						</select>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="freeze-local">本地时间:</label>
+						<input class="form-control" id='freeze-local' type='text'
+							   placeholder="冻结时间 (本地时间)" readonly>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="freeze-zonetime">时区时间:</label>
+						<input class="form-control" id='freeze-zonetime' type='text'
+							   placeholder="冻结时间 (时区时间)" readonly>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="freeze">UTC 时间戳:</label>
+						<input class="form-control" id='freeze' name='freeze' type='number'
+							   placeholder="冻结时间 (UTC 时间戳)"
+							   {% if freeze is defined and freeze != None %}value="{{ freeze }}"{% endif %} readonly>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-md btn-primary float-right">更新</button>
+	</form>
+</div>

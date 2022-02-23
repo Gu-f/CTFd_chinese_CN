@@ -1,0 +1,72 @@
+<div role="tabpanel" class="tab-pane config-section" id="usermode">
+	<form id="user-mode-form" method="POST" autocomplete="off" class="w-100 custom-config-form">
+		<div class="form-group">
+			<label for="ctf_name">
+				用户模式
+				<small class="form-text text-muted">控制用户是以团队形式加入游戏（团队模式）还是以自己的身份参与游戏（个人模式）</small>
+			</label>
+
+			<div class="row pt-3">
+				<div class="col-md-6">
+					<label class="h-100 w-100">
+						<input type="radio" class="card-radio d-none" name="user_mode" value="teams" {% if user_mode == 'teams' %}checked{% endif %}>
+						<div class="card rounded-0 h-100">
+							<div class="card-body p-3">
+								<span class="card-title">
+									<div class="form-check">
+										<input class="form-check-input card-radio-clone" type="radio" style="visibility: hidden;" checked>
+										<span class="form-check-label text-center">
+											<h5>团队模式</h5>
+										</span>
+										<ul class="p-0 small">
+											<li>参与者注册账户并组成小队</li>
+											<li>如果团队中的某个成员完成了一个挑战，整个团队都会获得积分</li>
+											<br>
+											<li>更容易看到哪个团队成员完成了挑战</li>
+											<li>但是管理员可能更难去管理</li>
+										</ul>
+									</div>
+								</span>
+							</div>
+						</div>
+					</label>
+				</div>
+				<div class="col-md-6">
+					<label class="h-100 w-100">
+						<input type="radio" class="card-radio d-none" name="user_mode" value="users" {% if user_mode == 'users' %}checked{% endif %}>
+						<div class="card rounded-0 h-100">
+							<div class="card-body p-3">
+								<span class="card-title">
+									<div class="form-check">
+										<input class="form-check-input card-radio-clone" type="radio" style="visibility: hidden;" checked>
+										<span class="form-check-label text-center">
+											<h5>个人模式</h5>
+										</span>
+										<ul class="p-0 small">
+											<li>参与者仅能注册自己的个人账户</li>
+											<li>玩家可以共享账户以组成虚拟团队</li>
+											<br>
+											<li>更容易组织和管理</li>
+											<li>将解决方案定位到单个团队成员是困难的</li>
+										</ul>
+									</div>
+								</span>
+							</div>
+						</div>
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="alert alert-danger text-center" role="alert">
+			<p>
+				<strong>更改用户模式将删除用户执行操作的所有提交和记录</strong>
+				<br><small>(提交, 奖项, 解锁, 追踪)</small>
+			</p>
+		</div>
+
+		<button type="submit" class="btn btn-md btn-primary float-right">
+			更新
+		</button>
+	</form>
+</div>

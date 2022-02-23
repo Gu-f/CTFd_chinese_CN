@@ -1,0 +1,97 @@
+{% extends "admin/base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>页面
+			<a class="no-decoration" href="{{ url_for('admin.pages_new') }}">
+				<span class="create-page" role="button" data-toggle="tooltip" title="新建页面">
+					<i class="btn-fa fas fa-plus-circle"></i>
+				</span>
+			</a>
+		</h1>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="float-right pb-3">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-outline-danger" data-toggle="tooltip" title="删除页面" id="pages-delete-button">
+						<i class="btn-fa fas fa-trash-alt"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table id="pages" class="table table-striped border">
+				<thead>
+				<tr>
+					<th class="border-right" data-checkbox>
+						<div class="form-check text-center">
+							<input type="checkbox" class="form-check-input" id="scoreboard-bulk-select" data-checkbox-all>&nbsp;
+						</div>
+					</th>
+					<th class="sort-col text-center"><b>标题</b></th>
+					<th class="sort-col text-center"><b>路由(URL指向)</b></th>
+					<th class="sort-col text-center"><b>是否需要登录访问</b></th>
+					<th class="sort-col text-center"><b>是否隐藏</b></th>
+					<th class="sort-col text-center"><b>发布状态</b></th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for page in pages %}
+					<tr data-href="{{ url_for('admin.pages_detail', page_id=page.id) }}">
+						<td class="border-right" data-checkbox>
+							<div class="form-check text-center">
+								<input type="checkbox" class="form-check-input" value="{{ page.id }}" data-page-id="{{ page.id }}">&nbsp;
+							</div>
+						</td>
+						<td class="page-title">
+							{{ page.title }}
+						</td>
+						<td class="page-route" page-id="{{ page.id }}" page-route="{{ page.route }}">
+							<a href="{{ url_for('admin.pages_detail', page_id=page.id) }}">
+								{{ page.route }}
+							</a>
+						</td>
+						<td class="text-center">
+							{% if page.auth_required %}
+							需要
+							{% else %}
+							{% endif %}
+						</td>
+						<td class="text-center">
+							{% if page.hidden %}
+								隐藏
+							{% else %}
+							{% endif %}
+						</td>
+						<td class="text-center">
+							{% if page.draft %}
+								草稿
+							{% else %}
+								已发布
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block entrypoint %}
+	<script defer src="{{ url_for('views.themes', theme='admin', path='js/pages/pages.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "admin/challenges/create.html" %}
+
+{% block header %}
+<div class="alert alert-secondary" role="alert">
+	动态挑战得分会随着完成挑战人数的增多而降低。
+</div>
+{% endblock %}
+
+
+{% block value %}
+<div class="form-group">
+	<label for="value">初始值<br>
+		<small class="form-text text-muted">
+			最初挑战的分值
+		</small>
+	</label>
+	<input type="number" class="form-control" name="initial" placeholder="输入分数" required>
+
+</div>
+
+<div class="form-group">
+	<label for="value">衰减限制<br>
+		<small class="form-text text-muted">
+			到达最低分值前解决的数量
+		</small>
+	</label>
+	<input type="number" class="form-control" name="decay" placeholder="输入衰减限制数" required>
+</div>
+
+<div class="form-group">
+	<label for="value">最小分值<br>
+		<small class="form-text text-muted">
+			这项挑战的最低分值
+		</small>
+	</label>
+	<input type="number" class="form-control" name="minimum" placeholder="输入最低分值" required>
+</div>
+{% endblock %}
+
+{% block type %}
+<input type="hidden" value="dynamic" name="type" id="chaltype">
+{% endblock %}

@@ -1,0 +1,14 @@
+<div role="tabpanel" class="tab-pane config-section" id="security">
+	<form method="POST" autocomplete="off" class="w-100">
+		<div class="form-group">
+			<label for="ctf_name">
+				注册码
+				<small class="form-text text-muted">账户注册所需要的注册码(邀请码)，不包含SSO</small>
+			</label>
+			<input class="form-control" id='registration_code' name='registration_code' type='text' placeholder="注册码"
+				   {% if registration_code is defined and registration_code != None %}value="{{ registration_code }}"{% endif %}>
+		</div>
+
+		<button type="submit" class="btn btn-md btn-primary float-right">更新</button>
+	</form>
+</div>

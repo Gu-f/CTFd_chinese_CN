@@ -1,0 +1,87 @@
+<div role="tabpanel" class="tab-pane config-section" id="backup">
+	<ul class="nav nav-tabs mb-3" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link active" href="#export-ctf" aria-controls="export-ctf" role="tab"
+			   data-toggle="tab">导出</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#import-ctf" aria-controls="import-ctf" role="tab" data-toggle="tab">导入</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link " href="#save-csv" aria-controls="save-csv" role="tab" data-toggle="tab">下载 CSV</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link " href="#import-csv" aria-controls="import-csv" role="tab" data-toggle="tab">导入 CSV</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="export-ctf">
+			<div class="form-group">
+				<p>导出是CTF当前状态的存档。它们可以重新导入其他CTFd
+					实例或由脚本和第三方用于计算统计信息.</p>
+				<p>要下载导出，请单击下面的按钮.</p>
+			</div>
+			<div class="form-group">
+				<a href="{{ url_for('admin.export_ctf') }}" id="export-button" class="btn btn-warning">导出</a>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="import-ctf">
+			<div class="form-group">
+				<p>您可以通过下面的上传按钮，来上传导出保存的CTFd，然后来导入它们。这将彻底清除你现有的
+					CTFd实例，您的所有数据都将被导入的数据替换.
+					您应该只导入您信任的数据!</p>
+
+				<div class="alert alert-warning" role="alert">
+					导入CTF将完全擦除现有数据
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="container-files">导入文件</label>
+				<input class="form-control-file" type="file" name="backup" id="import-file" accept=".zip">
+			</div>
+			<input id="import-button" type="submit" class="btn btn-warning" value="导入">
+		</div>
+		<div role="tabpanel" class="tab-pane" id="save-csv">
+			{% with form = Forms.config.ExportCSVForm() %}
+			<form method="GET" action="{{ url_for('admin.export_csv') }}">
+				<div class="form-group">
+					{{ form.table.label }}
+					{{ form.table(class="form-control custom-select") }}
+				</div>
+				<input type="submit" class="btn btn-warning" value="下载 CSV">
+			</form>
+			{% endwith %}
+		</div>
+		<div role="tabpanel" class="tab-pane" id="import-csv">
+			{% with form = Forms.config.ImportCSVForm() %}
+			<form method="POST" action="{{ url_for('admin.import_csv') }}" enctype="multipart/form-data">
+				<div class="form-group">
+					<div class="alert alert-info" role="alert">
+						<small class="text-muted text-right">
+							<a href="https://docs.ctfd.io/docs/imports/csv/" target="_blank">
+								<i class="far fa-question-circle"></i> 说明以及CSV模板
+							</a>
+						</small>
+					</div>
+				</div>
+				<div class="form-group">
+					<b>{{ form.csv_type.label }}</b>
+					{{ form.csv_type(class="form-control custom-select") }}
+					<small class="form-text text-muted">
+						{{ form.csv_type.description }}
+					</small>
+				</div>
+				<div class="form-group">
+					<b>{{ form.csv_file.label }}</b>
+					{{ form.csv_file(class="form-control-file") }}
+					<small class="form-text text-muted">
+						{{ form.csv_file.description }}
+					</small>
+				</div>
+				{{ form.nonce() }}
+				<input type="submit" class="btn btn-warning" value="导入 CSV">
+			</form>
+			{% endwith %}
+		</div>
+	</div>
+</div>

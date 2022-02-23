@@ -1,0 +1,70 @@
+{% block header %}
+{% endblock %}
+
+<form method="POST" action="{{ script_root }}/admin/challenges/new" enctype="multipart/form-data">
+	{% block name %}
+	<div class="form-group">
+		<label>
+			挑战名称:<br>
+			<small class="form-text text-muted">
+				你创建的挑战的名字
+			</small>
+		</label>
+		<input type="text" class="form-control" name="name" placeholder="输入挑战名称">
+	</div>
+	{% endblock %}
+
+	{% block category %}
+	<div class="form-group">
+		<label>
+			类别:<br>
+			<small class="form-text text-muted">
+				你创建的挑战的类别
+			</small>
+		</label>
+		<input type="text" class="form-control" name="category" placeholder="输入挑战类别">
+	</div>
+	{% endblock %}
+
+
+	{% block message %}
+	<div class="form-group">
+		<label>
+			挑战描述:<br>
+			<small class="form-text text-muted">
+				挑战题目内容介绍.
+			</small>
+		</label>
+		<textarea id="new-desc-editor" class="form-control markdown" name="description" rows="10"></textarea>
+	</div>
+	{% endblock %}
+
+	{% block value %}
+	<div class="form-group">
+		<label>
+			分值:<br>
+			<small class="form-text text-muted">
+				完成该挑战可获得的分值.
+			</small>
+		</label>
+		<input type="number" class="form-control" name="value" placeholder="输入分值" required>
+	</div>
+	{% endblock %}
+
+	{% block state %}
+	<input type="hidden" name="state" value="hidden">
+	{% endblock %}
+
+	{% block type %}
+	<input type="hidden" name="type" value="standard">
+	{% endblock %}
+
+	{% block submit %}
+	<div class="form-group">
+		<button class="btn btn-primary float-right create-challenge-submit" type="submit">创建</button>
+	</div>
+	{% endblock %}
+</form>
+
+{% block footer %}
+{% endblock %}

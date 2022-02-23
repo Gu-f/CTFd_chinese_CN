@@ -1,0 +1,41 @@
+<div role="tabpanel" class="tab-pane config-section" id="fields">
+	<form method="POST" autocomplete="off" class="w-100">
+		<h5>自定义字段</h5>
+
+		<small class="form-text text-muted">
+			添加自定义字段，以便于从参与者中获取其他数据
+		</small>
+
+		<ul class="nav nav-tabs mt-3" role="tablist">
+			<li class="nav-item active">
+				<a class="nav-link active" href="#user-fields" role="tab" data-toggle="tab">
+					用户
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#team-fields" role="tab" data-toggle="tab">
+					团队
+				</a>
+			</li>
+		</ul>
+
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="user-fields">
+				<div class="col-md-12 py-3">
+					<small>在注册过程中会显示自定义的字段，用户可以选择在其配置中编辑这些字段.</small>
+				</div>
+
+				<div id="user-field-list" class="pt-3">
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="team-fields">
+				<div class="col-md-12 py-3">
+					<small>自定义团队字段在团队创建期间显示。团队队长可以选择在团队配置中编辑这些字段。</small>
+				</div>
+
+				<div id="team-field-list" class="pt-3">
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

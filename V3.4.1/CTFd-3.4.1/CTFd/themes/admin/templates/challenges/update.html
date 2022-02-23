@@ -1,0 +1,96 @@
+{% block header %}
+{% endblock %}
+
+<form method="POST">
+	{% block name %}
+	<div class="form-group">
+		<label>
+			挑战名称<br>
+			<small class="form-text text-muted">挑战名称</small>
+		</label>
+		<input type="text" class="form-control chal-name" name="name" value="{{ challenge.name }}">
+	</div>
+	{% endblock %}
+
+	{% block category %}
+	<div class="form-group">
+		<label>
+			挑战类别<br>
+			<small class="form-text text-muted">挑战类别</small>
+		</label>
+		<input type="text" class="form-control chal-category" name="category" value="{{ challenge.category }}">
+	</div>
+	{% endblock %}
+
+	{% block message %}
+	<div class="form-group">
+		<label>
+			挑战描述<br>
+			<small class="form-text text-muted">
+				简单介绍下你的挑战，挑战的描述
+			</small>
+		</label>
+		<textarea id="desc-editor" class="form-control chal-desc-editor markdown" name="description" rows="10">{{ challenge.description }}</textarea>
+	</div>
+	{% endblock %}
+
+	{% block connection_info %}
+	<div class="form-group">
+		<label>
+			链接信息<br>
+			<small class="form-text text-muted">
+				用这个给你的挑战指定链接相关说明，如主机名，端口等
+			</small>
+		</label>
+		<input type="text" class="form-control chal-connection-info" name="connection_info" value="{{ challenge.connection_info | default('', true) }}">
+	</div>
+	{% endblock %}
+
+	{% block value %}
+	<div class="form-group">
+		<label for="value">
+			分值<br>
+			<small class="form-text text-muted">
+				解决该挑战能够获得的分数.
+			</small>
+		</label>
+		<input type="number" class="form-control chal-value" name="value" value="{{ challenge.value }}" required>
+	</div>
+	{% endblock %}
+
+	{% block max_attempts %}
+	<div class="form-group">
+		<label>
+			最大尝试次数<br>
+			<small class="form-text text-muted">用户提交的最大次数限制，设置为0表示不做限制.</small>
+		</label>
+
+		<input type="number" class="form-control chal-attempts" name="max_attempts" value="{{ challenge.max_attempts }}">
+	</div>
+	{% endblock %}
+
+	{% block state %}
+	<div class="form-group">
+		<label>
+			挑战状态<br>
+			<small class="form-text text-muted">更改挑战的状态(e.g. 发布, 隐藏)</small>
+		</label>
+
+		<select class="form-control custom-select" name="state">
+			<option value="visible" {% if challenge.state == "visible" %}选择{% endif %}>发布</option>
+			<option value="hidden" {% if challenge.state == "hidden" %}选择{% endif %}>隐藏</option>
+		</select>
+	</div>
+	{% endblock %}
+
+	{% block submit %}
+	<div>
+		<button class="btn btn-success btn-outlined float-right" type="submit">
+			更新
+		</button>
+	</div>
+	{% endblock %}
+</form>
+
+{% block footer %}
+{% endblock %}

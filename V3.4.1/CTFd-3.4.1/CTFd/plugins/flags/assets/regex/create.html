@@ -1,0 +1,37 @@
+<label>
+	正则表达式Flag<br>
+	<small>输入正则表达式Flag</small>
+</label>
+<div class="form-group">
+	<input type="text" class="form-control" name="content" value="{{ content }}">
+</div>
+<div class="form-group">
+	<select class="form-control custom-select col-md-6" name="data">
+		<option value="">区分大小写</option>
+		<option value="case_insensitive">不区分大小写</option>
+	</select>
+</div>
+<div class="form-group">
+	<label>举例</label>
+	<table class="table small">
+		<thead>
+			<tr>
+				<th scope="col">描述</th>
+				<th scope="col">Flag</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>匹配 flag{} 内的任何内容:</td>
+			<td><code>flag{.*}</code></td>
+		</tr>
+		<tr>
+			<td>匹配数字flags:</td>
+			<td><code>flag{(\d+)}</code></td>
+		</tr>
+		<tr>
+			<td>接收带或不带标志位flag{}:</td>
+			<td><code>(flag{)?this_is_a_flag(})?</code></td>
+		</tr>
+	</table>
+</div>
+<input type="hidden" name="type" value="regex">

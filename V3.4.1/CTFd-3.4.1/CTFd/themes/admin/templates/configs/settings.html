@@ -1,0 +1,106 @@
+<div role="tabpanel" class="tab-pane config-section" id="settings">
+	<form method="POST" autocomplete="off" class="w-100">
+		<div class="form-group">
+			<label>
+				挑战可见性<br>
+				<small class="form-text text-muted">
+					控制用户是否必须登录才能查看挑战
+				</small>
+			</label>
+			<select class="form-control custom-select" name="challenge_visibility">
+				<option value="public" {% if challenge_visibility == 'public' %}selected{% endif %}>
+					公开
+				</option>
+				<option value="private" {% if challenge_visibility == 'private' %}selected{% endif %}>
+					仅登录
+				</option>
+				<option value="admins" {% if challenge_visibility == 'admins' %}selected{% endif %}>
+					仅管理员
+				</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>
+				分数可见性<br>
+				<small class="form-text text-muted">
+					控制解决记录/得分是公开，还是向登录用户显示，还是仅向管理员显示
+				</small>
+			</label>
+			<select class="form-control custom-select" name="score_visibility">
+				<option value="public" {% if score_visibility == 'public' %}selected{% endif %}>
+					公开
+				</option>
+				<option value="private" {% if score_visibility == 'private' %}selected{% endif %}>
+					仅登录
+				</option>
+				<option value="hidden" {% if score_visibility == 'hidden' %}selected{% endif %}>
+					隐藏
+				</option>
+				<option value="admins" {% if score_visibility == 'admins' %}selected{% endif %}>
+					仅管理员
+				</option>
+			</select>
+			<small class="form-text text-muted">
+				该设置应和账户可见性相同，避免冲突。
+			</small>
+		</div>
+
+		<div class="form-group">
+			<label>
+				账户可见性<br>
+				<small class="form-text text-muted">
+					控制是否将帐户（用户和团队）显示给所有人，还是仅显示给登录的用户，还是仅显示给管理员
+				</small>
+			</label>
+			<select class="form-control custom-select" name="account_visibility">
+				<option value="public" {% if account_visibility == 'public' %}selected{% endif %}>
+					公开
+				</option>
+				<option value="private" {% if account_visibility == 'private' %}selected{% endif %}>
+					仅登录
+				</option>
+				<option value="admins" {% if account_visibility == 'admins' %}selected{% endif %}>
+					仅管理员
+				</option>
+			</select>
+			<small class="form-text text-muted">
+				该设置应和分数可见性相同，避免冲突。
+			</small>
+		</div>
+
+		<div class="form-group">
+			<label>
+				注册可见性<br>
+				<small class="form-text text-muted">
+					控制注册功能是否开放
+				</small>
+			</label>
+			<select class="form-control custom-select" name="registration_visibility">
+				<option value="public" {% if registration_visibility == 'public' %}selected{% endif %}>
+					开放
+				</option>
+				<option value="private" {% if registration_visibility == 'private' %}selected{% endif %}>
+					关闭
+				</option>
+				<option value="mlc" {% if registration_visibility == 'mlc' %}selected{% endif %}>
+					仅 MajorLeagueCyber
+				</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<div class="form-check">
+				<label>
+					<input id="paused" name="paused" type="checkbox" {% if paused %}checked{% endif %}>
+					暂停 CTF<br>
+					<small>
+						控制用户在暂停CTF比赛期间提交答案，但是挑战依然是可见的。
+					</small>
+				</label>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-md btn-primary float-right">更新</button>
+	</form>
+</div>
