@@ -1,3 +1,6 @@
+# 汉化迁移  
+中文已在官方仓库进行支持，感谢大家一路的关注和支持。  
+后续的更新将在[这里](https://poeditor.com/join/project/p5jhdcrlm7)继续，并会合并到[CTFd](https://github.com/CTFd/CTFd)仓库，此仓库将会封存。  
 # CTFd_chinese_CN
 Time-Line:
 + 对CTFd平台的汉化，并可通过主题切换用户界面的中英文，同时集成CTFd-V2.1.4版本
